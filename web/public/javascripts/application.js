@@ -19,7 +19,9 @@ function(logger, HubClient, OrdersController) {
 		// Configure helpers here
 		//this.helpers(ApplicationHelper);
 		
-        HubClient.init();
+        this.hubclient = new HubClient();
+        this.hubclient.start("http://localhost:4242");
+        //HubClient.start("http://localhost:4242");
         
 		// Configure controllers here
 		OrdersController(this);

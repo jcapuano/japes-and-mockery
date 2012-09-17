@@ -3,14 +3,18 @@ define(["utils/logger",
         "mocks/mockOrders"],
 function(logger, eventing, mockOrders) {
     
-    return {
+    return function() {
     
-    	init: function() {
+    	this.start = function() {
 	    	logger.info("Initializing the Hub Client");
 	    
         	this.subscribe();
-	    },
+	    };
 	    
+	    this.stop = function() {
+	    	logger.info("Stopping the Hub Client");
+	    };
+        
 	    //--------------------------------------
 	    //  EVENTS
 	    //--------------------------------------
@@ -21,13 +25,13 @@ function(logger, eventing, mockOrders) {
 	    //--------------------------------------
 	    //  SUBSCRIPTIONS
 	    //--------------------------------------
-	    subscribe: function() {
+	    this.subscribe = function() {
 	    	var subs = [
 	        	{topic: "getorders", handler: this.onGetOrders}
 	        ];
 	        
 	    	eventing.subscribeall(subs);
-	    },
+	    };
 
 	    //--------------------------------------
 	    //  HUB HANDLERS
@@ -36,13 +40,12 @@ function(logger, eventing, mockOrders) {
 	    //--------------------------------------
 	    //  MODEL HANDLERS
 	    //--------------------------------------
-        onGetOrders: function() {
-	    	logger.info("Initializing the Hub Client");
+        this.onGetOrders = function() {
+	    	logger.info("Getting Orders");
         	
             eventing.publish('setorders', mockOrders);
-        },
-    
-    
-    	noop: null
-    }
+        };
+        
+        //noop: null
+    };
 });

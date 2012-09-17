@@ -7,7 +7,7 @@ doc
 	Documents for the project
 
 hub
-	Node server side code (when/if there is some)
+	Node server side code
 
 web
 	Web client side code
