@@ -1,0 +1,12 @@
+<div id="index" class="ui-widget">
+	<h2 class="ui-widget-header">Orders</h2>
+	<div id="ordersList" class="ui-widget-content">
+		<ul>
+			{{#each orders}}
+			<li class="ui-state-default">
+				<span>&nbsp;&nbsp;&nbsp;<a href="#/order/{{id}}">{{status}} {{code}} {{customer.name}} {{requestedDate}}</a></span>
+			</li>        
+			{{/each}}
+		</ul>
+	</div>
+</div>

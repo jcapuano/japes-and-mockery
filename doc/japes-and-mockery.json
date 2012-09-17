@@ -1,0 +1,78 @@
+var Order = {
+    id: 0,
+    code: "",
+    poNumber: "",
+    status: "",
+    customer: null,         // Customer
+    plannerContact: null,   // Contact
+    billToCustomer: null,   // Customer
+    billToAddress: null,    // Address
+    payFromCustomer: null,  // Customer
+    payFromAddress: null,   // Address
+    deliveryAddress: null,  // Address
+    deliveryContact: null,  // Contact
+    deliveryInstructions: "",
+    requestedDate: null,    // Date
+    deliveryDate: null,     // Date
+    items: [],              // collection of OrderLine
+    subTotal: 0.0,
+    tax: 0.0,
+    grandTotal: 0.0
+};
+
+var OrderLine = {
+    id: 0,
+    code: "",
+    description: "",
+    quantity: 0.0,
+    unitPrice: 0.0,
+    tax: 0.0,
+    total: 0.0,
+    specialInstructions: ""
+};
+
+var Customer = {
+    id: 0,
+    name: "",
+    description: "",
+    locations: [],      // collection of Address
+    contacts: [],       // collection of Contact
+    account: null,      // Account
+    status: ""
+};
+
+var Account = {
+    id: 0,
+    number: "",
+    paymentterms: "",
+    creditcode: "",
+    creditlimit: 0.0
+};
+
+var Address = {
+    id: 0,
+    type: "",
+    line1: "",
+    line2: "",
+    line3: "",
+    line4: "",
+    line5: "",
+    city: "",
+    state: "",
+    country: "",
+    postalcode: ""
+};
+
+var Contact = {
+    id: 0,
+    name: "",
+    title: "",
+    addresses: [],      // collection of Address
+    communications: [] // collection of Communication
+};
+
+var Communication = {
+    id: 0,
+    type: "",
+    value: ""
+};
