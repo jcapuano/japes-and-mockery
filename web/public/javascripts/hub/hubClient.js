@@ -1,5 +1,7 @@
-define(["utils/logger", "utils/eventing"], 
-function(logger, eventing) {
+define(["utils/logger", 
+		"utils/eventing", 
+        "models/orderBuilder"], 
+function(logger, eventing, OrderBuilder) {
 
 	return function() {
     	var self = this;
@@ -20,7 +22,6 @@ function(logger, eventing) {
             
 			    self.socket.on('setorders', function(orders) {
 			        logger.info("Orders received");
-			        logger.info(orders);
                     self.OnSetOrders(orders);
 			    });
                 
@@ -67,7 +68,13 @@ function(logger, eventing) {
 	    //  HUB HANDLERS
 	    //--------------------------------------
         self.OnSetOrders = function(orders) {
-        	eventing.publish("setorders", orders);
+            orders = (typeof orders == "string") ? $.evalJSON(orders) : orders; 
+            logger.info(orders);
+            
+            // hydrate the model
+            var o = OrderBuilder.build(orders);
+        
+        	eventing.publish("setorders", o);
 		};
                     
 	    //--------------------------------------

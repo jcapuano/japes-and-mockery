@@ -1,7 +1,7 @@
 define(function() {
 	return function() {
-	    id: 0,
-	    type: "",
-	    value: ""
+	    this.id = 0;
+	    this.type = "";
+	    this.value = "";
     }
 });

@@ -1,23 +1,23 @@
 define(function() {
 	return function() {
-	    id: 0,
-	    code: "",
-	    poNumber: "",
-	    status: "",
-	    customer: null,         // Customer
-	    plannerContact: null,   // Contact
-	    billToCustomer: null,   // Customer
-	    billToAddress: null,    // Address
-	    payFromCustomer: null,  // Customer
-	    payFromAddress: null,   // Address
-	    deliveryAddress: null,  // Address
-	    deliveryContact: null,  // Contact
-	    deliveryInstructions: "",
-	    requestedDate: null,    // Date
-	    deliveryDate: null,     // Date
-	    items: [],              // collection of OrderLine
-	    subTotal: 0.0,
-	    tax: 0.0,
-	    grandTotal: 0.0
+	    this.id = 0;
+	    this.code = "";
+	    this.poNumber = "";
+	    this.status = "";
+	    this.customer = null;         // Customer
+	    this.plannerContact = null;   // Contact
+	    this.billToCustomer = null;   // Customer
+	    this.billToAddress = null;    // Address
+	    this.payFromCustomer = null;  // Customer
+	    this.payFromAddress = null;   // Address
+	    this.deliveryAddress = null;  // Address
+	    this.deliveryContact = null;  // Contact
+	    this.deliveryInstructions = "";
+	    this.requestedDate = null;    // Date
+	    this.deliveryDate = null;     // Date
+	    this.items = [];              // collection of OrderLine
+	    this.subTotal = 0.0;
+	    this.tax = 0.0;
+	    this.grandTotal = 0.0;
     }
 });

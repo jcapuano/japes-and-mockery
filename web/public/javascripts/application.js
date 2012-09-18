@@ -21,7 +21,6 @@ function(logger, HubClient, OrdersController) {
 		
         this.hubclient = new HubClient();
         this.hubclient.start("http://localhost:4242");
-        //HubClient.start("http://localhost:4242");
         
 		// Configure controllers here
 		OrdersController(this);

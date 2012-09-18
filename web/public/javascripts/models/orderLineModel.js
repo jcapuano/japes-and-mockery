@@ -1,12 +1,12 @@
 define(function() {
 	return function() {
-	    id: 0,
-	    code: "",
-	    description: "",
-	    quantity: 0.0,
-	    unitPrice: 0.0,
-	    tax: 0.0,
-	    total: 0.0,
-	    specialInstructions: ""
+	    this.id = 0;
+	    this.code = "";
+	    this.description = "";
+	    this.quantity = 0.0;
+	    this.unitPrice = 0.0;
+	    this.tax = 0.0;
+	    this.total = 0.0;
+	    this.specialInstructions = "";
     }
 });

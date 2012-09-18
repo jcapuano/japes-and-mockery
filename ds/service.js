@@ -50,15 +50,14 @@ RESTService = function(port) {
     
 };
 
-// main entry point
-(function() {
-	try {
-    	console.log('Creating Mock REST Service');
-        var port = process.argv.length > 2 ? process.argv[2] : null;
-    
-		var ds = new RESTService(port);
-		ds.start();
-    } catch (ex) {
-    	console.log('Error in creating Mock REST Service: ' + ex);
-    }
-})();
+try {
+	console.log('Creating Mock REST Service');
+	var port = process.argv.length > 2 ? process.argv[2] : null;
+
+	var ds = new RESTService(port);
+	ds.start();
+} catch (ex) {
+	console.log('Error in creating Mock REST Service: ' + ex);
+}
+
+

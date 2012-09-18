@@ -1,11 +1,11 @@
 define(function() {
 	return function() {
-	    id: 0,
-	    name: "",
-	    description: "",
-	    locations: [],      // collection of Address
-	    contacts: [],       // collection of Contact
-	    account: null,      // Account
-	    status: ""
+	    this.id = 0;
+	    this.name = "";
+	    this.description = "";
+	    this.locations = [];      // collection of Address
+	    this.contacts = [];       // collection of Contact
+	    this.account = null;      // Account
+	    this.status = "";
     }
 });

@@ -1,15 +1,15 @@
 define(function() {
 	return function() {
-	    id: 0,
-	    type: "",
-	    line1: "",
-	    line2: "",
-	    line3: "",
-	    line4: "",
-	    line5: "",
-	    city: "",
-	    state: "",
-	    country: "",
-	    postalcode: ""
+	    this.id = 0;
+	    this.type = "";
+	    this.line1 = "";
+	    this.line2 = "";
+	    this.line3 = "";
+	    this.line4 = "";
+	    this.line5 = "";
+	    this.city = "";
+	    this.state = "";
+	    this.country = "";
+	    this.postalcode = "";
     }
 });

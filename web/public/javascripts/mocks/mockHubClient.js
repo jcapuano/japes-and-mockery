@@ -1,7 +1,8 @@
 define(["utils/logger", 
 		"utils/eventing",
+        "models/orderBuilder",
         "mocks/mockOrders"],
-function(logger, eventing, mockOrders) {
+function(logger, eventing, OrderBuilder, mockOrders) {
     
     return function() {
     
@@ -43,7 +44,10 @@ function(logger, eventing, mockOrders) {
         this.onGetOrders = function() {
 	    	logger.info("Getting Orders");
         	
-            eventing.publish('setorders', mockOrders);
+            // hydrate the model
+            var o = OrderBuilder.build(mockOrders);
+            
+            eventing.publish('setorders', o);
         };
         
         //noop: null
