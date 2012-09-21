@@ -1,7 +1,7 @@
 define(["utils/logger", 
 		"utils/eventing",
         "models/orderBuilder",
-        "mocks/mockOrders"],
+        "mocks/mockOrders10"],
 function(logger, eventing, OrderBuilder, mockOrders) {
     
     return function() {
