@@ -53,8 +53,8 @@ function makeOrder(id) {
     order.deliveryAddress = makeAddress();  // Address
     order.deliveryContact = makeContact();  // Contact
     order.deliveryInstructions = "";
-    order.requestedDate = makeDate(randomInt(5));    // Date
-    order.deliveryDate = makeDate(randomInt(10));     // Date
+    order.requestedDate = makeDate(5);    // Date
+    order.deliveryDate = makeDate(10);     // Date
     order.items = makeOrderLines();              // collection of OrderLine
     order.subTotal = randomDecimal();
     order.tax = randomDecimal();
@@ -184,8 +184,10 @@ function makeOrderLine() {
 //-------------------------------------------------------------------
 
 function makeDate(days) {
+	days = days || 1;
+    var day = randomInt(0, days);
 	var d = new Date();
-    var t = d.getDate() + days;
+    var t = d.getDate() + day;
     d.setDate(t);
     return d;
 };
