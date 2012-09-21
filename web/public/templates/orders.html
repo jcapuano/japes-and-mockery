@@ -4,7 +4,7 @@
 		<ul>
 			{{#each orders}}
 			<li class="ui-state-default">
-				<span>&nbsp;&nbsp;&nbsp;<a href="#/order/{{id}}">{{status}} {{code}} {{customer.name}} {{requestedDate}}</a></span>
+				<span>&nbsp;&nbsp;&nbsp;<a href="#/order/{{id}}">{{status.value}} {{code.value}} {{customer.value.name.value}} {{requestedDate.value}}</a></span>
 			</li>        
 			{{/each}}
 		</ul>
