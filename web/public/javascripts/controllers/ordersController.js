@@ -89,10 +89,8 @@ function(logger, eventing, validation) {
         	try {
 	        	logger.info("Received orders");
 	            logger.info(orders);
-				//context.partial(app.VIEW_PATH + 'orders.html', {orders: orders});
-                var order = orders[0];
-				context.partial(app.VIEW_PATH + 'order.html', order, function() {
-                	this.setValidations(order);
+				context.partial(app.VIEW_PATH + 'orderList.html',{}, function() {
+                	this.LoadOrders(orders);
                 });
 			}
             catch (e) {
@@ -104,6 +102,46 @@ function(logger, eventing, validation) {
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
+        this.LoadOrders = function(orders) {
+        
+	    	var grid = $('#ordersTable')
+	          .dataTable( {
+	            "bJQueryUI": true,
+	            //"asStripeClasses": ['planningGridOdd', 'planningGridEven'],
+	            "bSort": false,
+	            "bFilter": false,
+	            "bInfo": false,
+	            "bPaginate": false,
+	            //"iDisplayLength": 16,
+	            //"iDisplayStart": 0,
+	            //"sDom": "rtS",
+	            //"sScrollY": "360px",
+	            //"bDeferRender": true,
+	            
+				"aaData": orders,
+				"aoColumns": [
+					{ "sTitle": "Code", "mDataProp": function(data, type, val) {
+	                        return data.code.value;
+	                	}
+	                },
+					{ "sTitle": "Status", "mDataProp": function(data, type, val) {
+	                		return data.status.value;
+	                	}
+	                },
+					{ "sTitle": "Customer", "mDataProp": function(data, type, val) {
+	                		return data.customer.value.code.value;
+	                	}
+	                },
+					{ "sTitle": "Delivery Date", "mDataProp": function(data, type, val) {
+	                		return data.deliveryDate.value;
+	                	}
+	                }
+				]
+			} );	
+	        
+	        // hide the "show entries" goo
+	        $('#ordersTable_length').parent().css('display','none'); 
+        };
         
         
 	    //--------------------------------------

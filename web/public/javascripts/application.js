@@ -8,7 +8,7 @@ function(logger, HubClient, OrdersController) {
 		
         logger.info("Creating Application");
         
-	    this.VIEW_PATH = '/templates/';
+	    this.VIEW_PATH = '/views/';
 	    
 	    // set the selector of the "bound" element
 	    this.element_selector = '#content';
@@ -27,12 +27,6 @@ function(logger, HubClient, OrdersController) {
 		// Configure controllers here
 		OrdersController(this);
 		
-		
-		$(function() {
-			$( "#accordion" ).accordion({autoHeight: false, collapsible: true});
-		});
+        $( "#accordion" ).accordion({autoHeight: false, collapsible: true});
 	});
-	
-
-
 });
