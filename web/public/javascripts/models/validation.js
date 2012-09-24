@@ -1,4 +1,5 @@
 define(function() {
+	// any value to this? this would allow one to call "validate" on the object
     var validations = {
     	required: function(value) {
 	    },
@@ -32,6 +33,8 @@ define(function() {
         none: null
     };
 
+    // view validations
+    // jquery validate mappings
     var jqvalidations = {
     	required: function(value) {
         	return {required: true};

@@ -1,5 +1,5 @@
-define(['models/property', 'validations/address'],
-function(property, validations) {
+define(['models/property', 'models/validation'],
+function(Property, validation) {
 	/*
      Example:
 		var json = {id: 1, 
@@ -29,22 +29,72 @@ function(property, validations) {
         a.line1.validate();
 	*/
 	return function Address(id, type, line1, line2, line3, line4, line5, city, state, country, postalcode) {
-	    this.id = new property(id, validations.id);
-	    this.type = new property(type, validations.type);
-	    this.line1 = new property(line1, validations.line1);
-	    this.line2 = new property(line2, validations.line2);
-	    this.line3 = new property(line3, validations.line3);
-	    this.line4 = new property(line4, validations.line4);
-	    this.line5 = new property(line5, validations.line5);
-	    this.city = new property(city, validations.city);
-	    this.state = new property(state, validations.state);
-	    this.country = new property(country, validations.country);
-	    this.postalCode = new property(postalcode, validations.postalcode);
+	    this.id = new Property(id);
+	    this.type = new Property(type, [
+        	new validation.Validation('required')
+	    	/* let the view handle this by presenting only valid choices 
+        	new validation.Validation('in', ['Main', 'Billing', 'Shipping', 'Other'])
+            */          
+		]);
+	    this.line1 = new Property(line1, [
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.line2 = new Property(line2, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.line3 = new Property(line3, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.line4 = new Property(line4, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.line5 = new Property(line5, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.city = new Property(city, [
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.state = new Property(state, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.country = new Property(country, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
+	    this.postalCode = new Property(postalcode, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
+        ]);
         
         /* less verbose?
         for (var prop in this) {
         	this[prop].validations = validations[prop]
         }
         */
-    }
+    };
 });
