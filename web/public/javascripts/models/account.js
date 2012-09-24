@@ -1,5 +1,5 @@
-define(['models/property', 'validations/account'],
-function(property, validations) {
+define(['models/property', 'models/validation'],
+function(Property,validation) {
 	/*
      Example:
 		var json = {id: 1, 
@@ -23,10 +23,29 @@ function(property, validations) {
         a.creditLimit.validate();
 	*/
 	return function Account(id, number, paymentterms, creditcode, creditlimit) {
-	    this.id = new property(id, validations.id);
-	    this.number = new property(number, validations.number);
-	    this.paymentTerms = new property(paymentterms, validations.paymentterms);
-	    this.creditCode = new property(creditcode, validations.creditcode);
-	    this.creditLimit = new property(creditlimit, validations.creditlimit);
+	    this.id = new Property(id);
+	    this.number = new Property(number, [
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 20)
+        ]);
+	    this.paymentTerms = new Property(paymentterms, [
+        	new validation.Validation('required')
+            /* let the view handle this by presenting only valid choices 
+        	new validation.Validation('in', ['Cash', 'Credit', 'PORequired'])
+            */          
+        ]);
+	    this.creditCode = new Property(creditcode, [
+        	new validation.Validation('required')
+            /* let the view handle this by presenting only valid choices 
+        	new validation.Validation('in', ['Open', 'Closed', 'Hold'])
+            */          
+        ]);
+	    this.creditLimit = new Property(creditlimit, [
+        	new validation.Validation('optional'),
+        	new validation.Validation('numeric'),
+        	new validation.Validation('greaterthanequal', 0)
+		]);
     }
 });
