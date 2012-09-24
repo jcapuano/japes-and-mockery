@@ -1,7 +1,33 @@
-<div id="navigation" class="ui-widget">
-	<ul>
-		<li><%= __('Projects') %></li>
-		<li><%= __('Orders') %></li>
-		<li><%= __('Customers') %></li>
-	</ul>
+<script>
+	$(function() {
+		$( "#accordion" ).accordion({autoHeight: false, collapsible: true});
+	});
+</script>
+	
+<div>
+	<div id="accordion" class="ui-widget">
+		<p>
+		<a href="#"><%= __('Projects') %></a>
+		<div>
+			<%= __('List') %><br>
+			<%= __('New') %><br>
+			<%= __('Edit') %><br>
+		</div>
+		<p>
+		<a href="#"><%= __('Orders') %></a>
+		<div>
+			<a href="#"><%= __('List') %></a><br>
+			<a href="#"><%= __('New') %></a><br>
+			<a href="#"><%= __('Edit') %></a><br>
+		</div>
+		<p>
+		<a href="#"><%= __('Customers') %></a>
+		<div>
+			<%= __('List') %><br>
+			<%= __('New') %><br>
+			<%= __('Edit') %><br>
+		</div>
+	</div>
 </div>
+
+
