@@ -19,10 +19,20 @@ function(logger, HubClient, OrdersController) {
 		// Configure helpers here
 		//this.helpers(ApplicationHelper);
 		
+		
+		
         this.hubclient = new HubClient();
         this.hubclient.start("http://localhost:4242");
         
 		// Configure controllers here
 		OrdersController(this);
+		
+		
+		$(function() {
+			$( "#accordion" ).accordion({autoHeight: false, collapsible: true});
+		});
 	});
+	
+
+
 });
