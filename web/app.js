@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , i18n = require('i18n')
   , http = require('http');
  // ,fs = require('fs')
  // , hbs = require('hbs');
@@ -26,6 +27,12 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(i18n.init);
+});
+
+i18n.configure({
+	locales:['en'],
+	register:global
 });
 
 app.configure('development', function(){
