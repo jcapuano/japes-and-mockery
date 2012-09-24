@@ -20,21 +20,23 @@ RESTService = function(port) {
         if (routes && routes.length > 0) {
         	for (var i = 0; i<routes.length; i++) {
             	var route = routes[i];
-                console.log("   " + route.method + " @ " + route.url);
-            	if (route.method == "post") {
-                	server.post(route.url, route.handler);
-                }
-                else if (route.method == "get") {
-                	server.get(route.url, route.handler);
-                }
-                else if (route.method == "put") {
-                	server.put(route.url, route.handler);
-                }
-                else if (route.method == "delete") {
-                	server.del(route.url, route.handler);
-                }
-                else {
-                	console.log("Unknown REST operation specified: " + route.method);
+                if (route) {
+	                console.log("   " + route.method + " @ " + route.url);
+	            	if (route.method == "post") {
+	                	server.post(route.url, route.handler);
+	                }
+	                else if (route.method == "get") {
+	                	server.get(route.url, route.handler);
+	                }
+	                else if (route.method == "put") {
+	                	server.put(route.url, route.handler);
+	                }
+	                else if (route.method == "delete") {
+	                	server.del(route.url, route.handler);
+	                }
+	                else {
+	                	console.log("Unknown REST operation specified: " + route.method);
+	                }
                 }
             }
         }

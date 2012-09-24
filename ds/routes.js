@@ -1,4 +1,5 @@
 //var OrderBuilder = require('../models/orderBuilder.js');
+var codes = require('./orderCodes.js');
 
 var routes = [
 	{
@@ -52,8 +53,41 @@ var routes = [
                 res.end(msg, 'utf-8');
 		    }
 		}
+    },
+	{
+    	method: "get",
+    	url: "/order/CodeIsUnique",
+        handler: function(req, res, next) {
+	    	try {
+	        	console.log("Get Order Service");
+                //console.log(req.headers);
+                console.log(req.params);
+                var code = req.params.code;
+                
+                res.writeHead(200, {'Content-Type': 'application/json', 
+									'Access-Control-Allow-Origin': '*',
+									'Access-Control-Allow-Methods': 'GET, OPTIONS',
+									'Access-Control-Allow-Headers': '*',
+									'Access-Control-Max-Age': 1728000
+                					 });
+                if (code && codes.indexOf(code) > -1) {
+                	console.log("Code found");
+					res.end("false", 'utf-8');
+                }
+                else {
+                	console.log("Code NOT found");
+					res.end("true", 'utf-8');
+                }
+                return next();
+            
+		    } catch (ex) {
+            	var msg = 'Error in processing REST operation: ' + ex;
+		    	console.log(msg);
+                res.writeHead(500, { 'Content-Type': 'application/text' });
+                res.end(msg, 'utf-8');
+		    }
+		}
     }
-    
 ];
 
 module.exports = routes;
