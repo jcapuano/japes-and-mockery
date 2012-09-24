@@ -1,65 +1,65 @@
 define(['models/validation'],
-function(Validation) {
+function(validation) {
 	return {
     	type: [
-        	new Validation('required')
+        	new validation.Validation('required')
 	    	/* let the view handle this by presenting only valid choices 
-        	new Validation('in', ['Main', 'Billing', 'Shipping', 'Other'])
+        	new validation.Validation('in', ['Main', 'Billing', 'Shipping', 'Other'])
             */          
 		],
     	line1: [
-        	new Validation('required'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	line2: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	line3: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	line4: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	line5: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	city: [
-        	new Validation('required'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	state: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	country: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ],
     	postalcode: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 255)
         ]
     }
 });

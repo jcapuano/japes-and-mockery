@@ -1,22 +1,22 @@
 define(['models/validation'],
-function(Validation) {
+function(validation) {
 	return {
     	type: [
-        	new Validation('required')
+        	new validation.Validation('required')
             /* let the view handle this by presenting only valid choices 
-        	new Validation('in', ['Office Phone', 'Mobile Phone', 'Office Fax', 'Email', 'Twitter', 'Other'])
+        	new validation.Validation('in', ['Office Phone', 'Mobile Phone', 'Office Fax', 'Email', 'Twitter', 'Other'])
             */          
         ],
     	value: [
-        	new Validation('required'),
-        	new Validation('bytype', [
-            						{type: 'Office Phone', rule: new Validation('regex', '')},
-            						{type: 'Mobile Phone', rule: new Validation('regex', '')},
-            						{type: 'Office Fax', rule: new Validation('regex', '')},
-            						{type: 'Email', rule: new Validation('regex', '')}
+        	new validation.Validation('required'),
+        	new validation.Validation('bytype', [
+            						{type: 'Office Phone', rule: new validation.Validation('regex', '')},
+            						{type: 'Mobile Phone', rule: new validation.Validation('regex', '')},
+            						{type: 'Office Fax', rule: new validation.Validation('regex', '')},
+            						{type: 'Email', rule: new validation.Validation('regex', '')}
                                     ]),
-        	new Validation('min', 1),
-        	new Validation('max', 50)
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 50)
 		]
     }
 });

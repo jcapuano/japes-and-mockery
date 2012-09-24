@@ -1,5 +1,5 @@
-define(["utils/logger", "utils/eventing"],
-function(logger, eventing) {
+define(["utils/logger", "utils/eventing", "models/validation"],
+function(logger, eventing, validation) {
 
 	return function(app) { 
 		
@@ -86,14 +86,40 @@ function(logger, eventing) {
 	    //  HUB HANDLERS
 	    //--------------------------------------
         this.onSetOrders = function(context, orders) {
-        	logger.info("Received orders");
-            logger.info(orders);
-			context.partial(app.VIEW_PATH + 'orders.html', {orders: orders});
+        	try {
+	        	logger.info("Received orders");
+	            logger.info(orders);
+				//context.partial(app.VIEW_PATH + 'orders.html', {orders: orders});
+                var order = orders[0];
+				context.partial(app.VIEW_PATH + 'order.html', order, function() {
+                	this.setValidations(order);
+                });
+			}
+            catch (e) {
+            	logger.error(e);
+            }                	
         };
 	    
 		
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
-	}
+        
+        
+	    //--------------------------------------
+	    //  VIEW VALIDATIONS
+	    //--------------------------------------
+        this.setValidations = function(order) {
+        	// attach the validations to the view fields
+        	validation.SetViewValidations("#formOrderEdit", [
+            		new validation.ViewValidation("#inputOrderCode", order.code.validations),
+            		new validation.ViewValidation("#inputPONumber",order.poNumber.validations),
+            		new validation.ViewValidation("#selectStatus", order.status.validations)
+                    ]);
+        };
+        
+	    //--------------------------------------
+	    //  VALIDATIONS
+	    //--------------------------------------
+	};
 });    

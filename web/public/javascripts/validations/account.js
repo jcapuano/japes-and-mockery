@@ -1,28 +1,28 @@
 define(['models/validation'],
-function(Validation) {
+function(validation) {
 	return {
     	number: [
-        	new Validation('required'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 20)
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 20)
         ],
     	paymentterms: [
-        	new Validation('required')
+        	new validation.Validation('required')
             /* let the view handle this by presenting only valid choices 
-        	new Validation('in', ['Cash', 'Credit', 'PORequired'])
+        	new validation.Validation('in', ['Cash', 'Credit', 'PORequired'])
             */          
         ],
     	creditcode: [
-        	new Validation('required')
+        	new validation.Validation('required')
             /* let the view handle this by presenting only valid choices 
-        	new Validation('in', ['Open', 'Closed', 'Hold'])
+        	new validation.Validation('in', ['Open', 'Closed', 'Hold'])
             */          
         ],
     	creditlimit: [
-        	new Validation('optional'),
-        	new Validation('numeric'),
-        	new Validation('greaterthanequal', 0)
+        	new validation.Validation('optional'),
+        	new validation.Validation('numeric'),
+        	new validation.Validation('greaterthanequal', 0)
 		]
     }
 });

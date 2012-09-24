@@ -1,18 +1,18 @@
 define(['models/validation'],
-function(Validation) {
+function(validation) {
 	return {
     	code: [
-        	new Validation('required'),
-        	new Validation('alphanum'),
-        	new Validation('min', 1),
-        	new Validation('max', 20),
-        	new Validation('unique', 'http://server:port/products/:code')
+        	new validation.Validation('required'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 1),
+        	new validation.Validation('max', 20),
+        	new validation.Validation('unique', 'http://server:port/products/:code')
         ],
     	description: [
-        	new Validation('optional'),
-        	new Validation('alphanum'),
-        	new Validation('min', 0),
-        	new Validation('max', 255)
+        	new validation.Validation('optional'),
+        	new validation.Validation('alphanum'),
+        	new validation.Validation('min', 0),
+        	new validation.Validation('max', 255)
         ]
     }
 });
