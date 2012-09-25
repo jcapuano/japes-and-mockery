@@ -20,7 +20,7 @@ var words = [
 // Makers
 //-------------------------------------------------------------------
     
-function makeOrders(count) {
+function generateOrders(count) {
 	console.log("Generating " + count + " orders");
     
     var filename = './data/mockOrders' + count + '.js';
@@ -35,6 +35,39 @@ function makeOrders(count) {
     }
     fs.appendFileSync(filename, "]; });");
 };
+
+function generateCustomers(count) {
+	console.log("Generating " + count + " customers");
+    
+    var filename = './data/mockCustomers' + count + '.js';
+    console.log("Writing Customers file " + filename);
+    
+    fs.writeFileSync(filename, "define(function() { return [");
+	for (var i=0; i<count; i++) {
+    	var customer = makeCustomer(i);
+    	fs.appendFileSync(filename, JSON.stringify(customer));
+        if (i+1 < count)
+    		fs.appendFileSync(filename, ",");
+    }
+    fs.appendFileSync(filename, "]; });");
+};
+
+function generateContacts(count) {
+	console.log("Generating " + count + " contacts");
+    
+    var filename = './data/mockContacts' + count + '.js';
+    console.log("Writing Contacts file " + filename);
+    
+    fs.writeFileSync(filename, "define(function() { return [");
+	for (var i=0; i<count; i++) {
+    	var contact = makeContact(i);
+    	fs.appendFileSync(filename, JSON.stringify(contact));
+        if (i+1 < count)
+    		fs.appendFileSync(filename, ",");
+    }
+    fs.appendFileSync(filename, "]; });");
+};
+
 
 function makeOrder(id) {
 	console.log("Generating Order for ID " + id);
@@ -63,9 +96,15 @@ function makeOrder(id) {
     return order;
 };
 
-function makeCustomer() {
+function makeCustomer(id) {
+	if (id) {
+		console.log("Generating Customer for ID " + id);
+    }
+    else {
+    	id = randomID();
+    }
 	var customer = new Customer();
-    customer.id = randomID();
+    customer.id = id;
     customer.code = randomCode();
     customer.description = randomText();
     customer.locations = makeAddresses();
@@ -94,9 +133,16 @@ function makeContacts(count) {
     return contacts;
 };
 
-function makeContact() {
+function makeContact(id) {
+	if (id) {
+		console.log("Generating Contact for ID " + id);
+    }
+    else {
+    	id = randomID();
+    }
+
 	var contact = new Contact();
-    contact.id = randomID();
+    contact.id = id;
 	contact.name = randomText(2);
     contact.title = randomWord(15);
     contact.addresses = makeAddresses();
@@ -278,14 +324,21 @@ function randomOneOf(list) {
 // main entry point
 //-------------------------------------------------------------------
 try {
-	console.log('Creating Mock Order JSON');
-    var count = process.argv.length > 2 ? parseInt(process.argv[2]) : 10;
+	console.log('Creating Mock JSON');
+    var model = process.argv.length > 2 ? process.argv[2] : 'order';
+    var count = process.argv.length > 3 ? parseInt(process.argv[3]) : 10;
 
-    makeOrders(count);
+    var makers = {
+    	order: generateOrders,
+    	customer: generateCustomers,
+    	contact: generateContacts
+    };
+    
+    makers[model](count);
     
 	console.log('Done');
     
     
 } catch (ex) {
-	console.log('Error in creating Mock Order JSON: ' + ex);
+	console.log('Error in creating Mock JSON: ' + ex);
 }
