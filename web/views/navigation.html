@@ -1,29 +1,28 @@
 
-	
-<div>
-	<div id="accordion" class="ui-widget">
-		<p>
-		<a href="#"><%= __('Projects') %></a>
-		<div>
-			<%= __('List') %><br>
-			<%= __('New') %><br>
-			<%= __('Edit') %><br>
-		</div>
-		<p>
-		<a href="#"><%= __('Orders') %></a>
-		<div>
-			<a href="#/orders"><%= __('List') %></a><br>
-			<a href="#"><%= __('New') %></a><br>
-			<a href="#"><%= __('Edit') %></a><br>
-		</div>
-		<p>
-		<a href="#"><%= __('Customers') %></a>
-		<div>
-			<%= __('List') %><br>
-			<%= __('New') %><br>
-			<%= __('Edit') %><br>
-		</div>
-	</div>
-</div>
+	<div id='cssmenu'>
+<ul>
 
+   <li class='has-sub '><a href='#'><span><%= __('Projects') %></span></a>
+      <ul>
+         <li class='has-sub '><a href='#'><span><%= __('List') %></span></a></li>
+         <li class='has-sub '><a href='#'><span><%= __('New') %></span></a></li>
+		 <li class='has-sub '><a href='#'><span><%= __('Edit') %></span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub '><a href='#/orders'><span><%= __('Orders') %></span></a>
+      <ul>
+         <li class='has-sub '><a href='#/orders'><span><%= __('List') %></span></a></li>
+         <li class='has-sub '><a href='#'><span><%= __('New') %></span></a></li>
+		 <li class='has-sub '><a href='#'><span><%= __('Edit') %></span></a></li>
+      </ul>
+   </li>
+   <li class='has-sub '><a href='#'><span><%= __('Customers') %></span></a>
+      <ul>
+         <li class='has-sub '><a href='#/orders'><span><%= __('List') %></span></a></li>
+         <li class='has-sub '><a href='#'><span><%= __('New') %></span></a></li>
+		 <li class='has-sub '><a href='#'><span><%= __('Edit') %></span></a></li>
+      </ul>
+   </li>
+</ul>
+</div>
 
