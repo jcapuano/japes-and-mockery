@@ -18,9 +18,18 @@ function(logger, HubClient, OrdersController) {
 		
 		// Configure helpers here
 		//this.helpers(ApplicationHelper);
+        
+		var partials = {
+	    	orderList: this.VIEW_PATH + 'orderList.html',
+	        orderAdd: this.VIEW_PATH + 'orderAdd.html',
+	        orderEdit: this.VIEW_PATH + 'orderEdit.html'
+	    };
 		
-		
-		
+        this.get("#/", function(context) {
+        	var rc = context.load($("#content"));
+            rc.loadPartials(partials);
+        });
+        
         this.hubclient = new HubClient();
         this.hubclient.start("http://localhost:4242");
         
