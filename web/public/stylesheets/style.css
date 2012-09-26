@@ -1,8 +1,9 @@
 body {
   
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("/images/bg-layered.png");
+  background-image: url("/images/bg-rock.jpg");
   height: 900px;
+  margin: 0 auto;
 }
 
 a {
@@ -11,7 +12,7 @@ a {
 
 #content {
   background: none repeat scroll 0 0 #f1f1f1;
-    
+    Margin: 0 auto;
     border-radius: 6px 6px 6px 6px;
     box-shadow: 0 11px 8px -3px #555555;
     height: 546px;
@@ -41,7 +42,7 @@ height: 83%;
 
 #wrapper {
 
-width: 933px;
+width: 100%;
 margin: 0 auto;
 }
 
@@ -78,5 +79,50 @@ margin: 0 auto;
     width: 900px;
 }
 
-//*css drop down*//
+#address {
+background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+margin:auto;
+position:relative;
+width:580px;
+height:310px;
+font-family: Tahoma, Geneva, sans-serif;
+font-size: 12px;
+font-style: italic;
+line-height: 24px;
+font-weight: bold;
+color: #333;
+text-decoration: none;
+
+padding:10px;
+border: 1px solid #999;
+border: inset 1px solid #333;
+padding-left: 50px;
+}
+
+input    {
+width:500px;
+display:block;
+border: 1px solid #999;
+height: 25px;
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.col-left {
+width: 500px;
+
+}
+#address #company {
+width: 200px;
+}
+
+#address #address3 {
+width: 200px;
+}
+
+#address h1 {
+font-size: 14px;
+}
 
