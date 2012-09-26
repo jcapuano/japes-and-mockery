@@ -25,24 +25,53 @@ var routes = [
     },
 	{
     	method: "get",
-    	url: "/orders",
+    	url: "/orders",///start/:start/length/:length/echo/:echo",
         handler: function(req, res, next) {
 	    	try {
 	        	console.log("Get to Order Service");
+                console.log(req.body);
+                //var start = parseInt(req.params.start) || 0;
+                //var length = parseInt(req.params.length) || 10;
+                //var echo = req.params.echo || "";
+                var start = 0;
+                var length = 10;
+                var echo = "";
+                
                 
                 console.log("Get orders");
-                var mockorders = require('./data/mockOrders.js');
-                console.log(mockorders);
+		    	console.log("Getting " + length + " Orders starting from " + start);
+	            
+                var mockorders = require('./data/mockOrders100.js');
+	            if (length > mockorders.length) {
+	            	length = mockorders.length;
+	            }
+	            if (start < 0) {
+	            	start = 0;
+	            }
+	            else if (start > mockorders.length - length) {
+	            	start = mockorders.length - length;
+	            }
+	            var end = start + length;
+	            
                 
-                console.log("Build orders...");
-                var orders = //OrderBuilder.build(mockorders);
-						mockorders;
-                console.log("Build orders...done");
-                console.dir(orders);
+                console.log("Build orders... " + start + " - " + end);
+	            var orders = mockorders.slice(start, end);
+                console.log("Build orders...done (" + orders.length + ")");
+                
+            	var result = {
+	            	iTotalRecords: mockorders.length,
+	                iTotalDisplayRecords: mockorders.length,
+	                sEcho: echo,
+	                sColumns: "",
+	                aaData: orders
+	            };
+                
+                //console.dir(result);
+                
                 
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 //res.end(OrderBuilder.stringify(orders), 'utf-8');                
-				res.end(JSON.stringify(orders, 'utf-8'));
+				res.end(JSON.stringify(result, 'utf-8'));
                 
                 return next();
             

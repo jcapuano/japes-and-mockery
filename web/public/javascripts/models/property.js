@@ -1,12 +1,25 @@
 define(function() {
-	return function Property(value, validations) {
-	    this.value = value;
-	    this.validations = validations || [];	// collection of validation
+	return function Property(v, validations) {
+    	var value = v;
+	    function property() {
+	        if (arguments.length > 0) {
+	            // Write
+				value = arguments[0];
+	            return this; // Permits chained assignments
+	        }
+	        else {
+	            // Read
+	            return value;
+	        }
+	    }
         
-        this.validate = function() {
-        	return _.all(a.line1.validations, function(validation) {
+        property.validations = validations || [];	// collection of validation
+        property.validate = function() {
+        	return _.all(this.validations, function(validation) {
             	return validation.isvalid(this.value);
             });
         };
-    }
+        
+        return property;
+    };
 });

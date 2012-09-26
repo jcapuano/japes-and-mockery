@@ -7,19 +7,20 @@ function DataServiceOrders(config) {
     
     self.rest = require('restler');
     
-    self.getOrders = function(callback) {
+    self.getOrders = function(options, callback) {
     	try {
         	console.log("Get Orders");
+        	//var url = self.URL + 'orders/start/' + options.iDisplayStart + '/length/' + options.iDisplayLength + '/echo/' + options.sEcho;
         	var url = self.URL + 'orders';
-            self.get(url, callback);
+            self.get(url, options, callback);
 	    } catch (ex) {
 	    	console.log('Error in retrieving orders: ' + ex);
 	    }
 	}
     
-    self.get = function(url, callback) {
+    self.get = function(url, data, callback) {
     	console.log("Calling REST URL: " + url);
-        self.rest.get(url).on('complete', function(result) {
+        self.rest.get(url, {data: data}).on('complete', function(result) {
         	if (result instanceof Error) {
             	callback({error: result.message});
 			} else {

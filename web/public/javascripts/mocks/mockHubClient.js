@@ -1,10 +1,13 @@
 define(["utils/logger", 
 		"utils/eventing",
         "models/orderBuilder",
-        "mocks/mockOrders10"],
+        "mocks/mockOrders100"],
 function(logger, eventing, OrderBuilder, mockOrders) {
     
     return function() {
+    
+    	// hydrate the model
+        var orders = OrderBuilder.build(mockOrders);
     
     	this.start = function() {
 	    	logger.info("Initializing the Hub Client");
@@ -41,15 +44,37 @@ function(logger, eventing, OrderBuilder, mockOrders) {
 	    //--------------------------------------
 	    //  MODEL HANDLERS
 	    //--------------------------------------
-        this.onGetOrders = function() {
-	    	logger.info("Getting Orders");
-        	
-            // hydrate the model
-            var o = OrderBuilder.build(mockOrders);
+        this.onGetOrders = function(options) {
+        	options = options || {
+            	iDisplayStart: 0,
+                iDisplayLength: 10,
+                sEcho: ""
+             };
+	    	logger.info("Getting " + options.iDisplayLength + " Orders starting from " + options.iDisplayStart);
             
-            eventing.publish('setorders', o);
+            var l = options.iDisplayLength;
+            if (l > orders.length) {
+            	l = orders.length;
+            }
+            
+            var s = options.iDisplayStart;
+            if (s < 0) {
+            	s = 0;
+            }
+            else if (s > orders.length - l) {
+            	s = orders.length - l;
+            }
+            var e = s + l;
+            
+            var o = orders.slice(s, e);
+            
+            eventing.publish('setorders', {
+            	iTotalRecords: orders.length,
+                iTotalDisplayRecords: orders.length,
+                sEcho: options.sEcho,
+                sColumns: "",
+                aaData: o
+            });
         };
-        
-        //noop: null
     };
 });

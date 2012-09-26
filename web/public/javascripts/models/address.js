@@ -30,61 +30,61 @@ function(Property, validation) {
 	*/
 	return function Address(id, type, line1, line2, line3, line4, line5, city, state, country, postalcode) {
 	    this.id = new Property(id);
-	    this.type = new Property(type, [
+	    this.type = Property(type, [
         	new validation.Validation('required')
 	    	/* let the view handle this by presenting only valid choices 
         	new validation.Validation('in', ['Main', 'Billing', 'Shipping', 'Other'])
             */          
 		]);
-	    this.line1 = new Property(line1, [
+	    this.line1 = Property(line1, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.line2 = new Property(line2, [
+	    this.line2 = Property(line2, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.line3 = new Property(line3, [
+	    this.line3 = Property(line3, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.line4 = new Property(line4, [
+	    this.line4 = Property(line4, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.line5 = new Property(line5, [
+	    this.line5 = Property(line5, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.city = new Property(city, [
+	    this.city = Property(city, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.state = new Property(state, [
+	    this.state = Property(state, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.country = new Property(country, [
+	    this.country = Property(country, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 255)
         ]);
-	    this.postalCode = new Property(postalcode, [
+	    this.postalCode = Property(postalcode, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),

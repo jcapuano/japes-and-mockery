@@ -23,26 +23,26 @@ function(Property,validation) {
         a.creditLimit.validate();
 	*/
 	return function Account(id, number, paymentterms, creditcode, creditlimit) {
-	    this.id = new Property(id);
-	    this.number = new Property(number, [
+	    this.id = Property(id);
+	    this.number = Property(number, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 20)
         ]);
-	    this.paymentTerms = new Property(paymentterms, [
+	    this.paymentTerms = Property(paymentterms, [
         	new validation.Validation('required')
             /* let the view handle this by presenting only valid choices 
         	new validation.Validation('in', ['Cash', 'Credit', 'PORequired'])
             */          
         ]);
-	    this.creditCode = new Property(creditcode, [
+	    this.creditCode = Property(creditcode, [
         	new validation.Validation('required')
             /* let the view handle this by presenting only valid choices 
         	new validation.Validation('in', ['Open', 'Closed', 'Hold'])
             */          
         ]);
-	    this.creditLimit = new Property(creditlimit, [
+	    this.creditLimit = Property(creditlimit, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthanequal', 0)

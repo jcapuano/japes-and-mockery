@@ -1,40 +1,40 @@
 define(['models/property', 'models/validation'],
 function(Property, validation) {
 	return function OrderLine(id, code, description, quantity, unitPrice, tax, total, specialInstructions) {
-	    this.id = new Property(id);
-	    this.code = new Property(name, [
+	    this.id = Property(id);
+	    this.code = Property(name, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),
         	new validation.Validation('max', 20)
         ]);
-	    this.description = new Property(description, [
+	    this.description = Property(description, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 0),
         	new validation.Validation('max', 255)
         ]);
-	    this.quantity = new Property(quantity, [
+	    this.quantity = Property(quantity, [
         	new validation.Validation('required'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthan', 0)
 		]);
-	    this.unitPrice = new Property(unitPrice, [
+	    this.unitPrice = Property(unitPrice, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthan', 0)
 		]);
-	    this.tax = new Property(tax, [
+	    this.tax = Property(tax, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthanequal', 0)
 		]);
-	    this.total = new Property(total, [
+	    this.total = Property(total, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthan', 0)
 		]);
-	    this.specialInstructions = new Property(specialInstructions, [
+	    this.specialInstructions = Property(specialInstructions, [
         	new validation.Validation('optional'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 0),

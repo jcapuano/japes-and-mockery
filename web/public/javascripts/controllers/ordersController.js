@@ -9,18 +9,16 @@ function(logger, eventing, validation) {
 	    // pub: setorders
 	    
 	    // sub: getorders
+        var dtCallback = null;
 	    
 	    //--------------------------------------
 	    //  SUBSCRIPTIONS
 	    //--------------------------------------
         eventing.subscribeall([
         	{topic: "setorders", handler: function(orders) {
-            	app.trigger('setorders', orders);
+            	this.onSetOrders(orders);
 			}}
 		]);
-        app.bind('setorders', function(e, orders) {
-        	onSetOrders(this, orders);
-        });
         
 	    //--------------------------------------
 	    //  ROUTES
@@ -29,7 +27,9 @@ function(logger, eventing, validation) {
 		// GET index
 		app.get('#/orders', function(context) {
         	logger.info("Requesting orders");
-            eventing.publish('getorders');
+            context.partial(app.VIEW_PATH + 'orderList.html',{}, function() {
+            	this.LoadOrders();
+			});
 		});
 		
 		// GET new
@@ -59,13 +59,13 @@ function(logger, eventing, validation) {
 	    //--------------------------------------
 	    //  HUB HANDLERS
 	    //--------------------------------------
-        this.onSetOrders = function(context, orders) {
+        this.onSetOrders = function(orders) {
         	try {
 	        	logger.info("Received orders");
 	            logger.info(orders);
-				context.partial(app.VIEW_PATH + 'orderList.html',{}, function() {
-                	this.LoadOrders(orders);
-                });
+                if (dtCallback) {
+                	dtCallback(orders);
+                }
 			}
             catch (e) {
             	logger.error(e);
@@ -76,7 +76,7 @@ function(logger, eventing, validation) {
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
-        this.LoadOrders = function(orders) {
+        this.LoadOrders = function() {
         
 	    	var grid = $('#ordersTable')
 	          .dataTable( {
@@ -84,33 +84,44 @@ function(logger, eventing, validation) {
 	            //"asStripeClasses": ['planningGridOdd', 'planningGridEven'],
 	            "bSort": false,
 	            "bFilter": false,
-	            "bInfo": false,
-	            "bPaginate": false,
-	            //"iDisplayLength": 16,
-	            //"iDisplayStart": 0,
+	            "bInfo": true,
+	            "bPaginate": true,
+	           	"iDisplayStart": 0,
+	            "iDisplayLength": 10,
+                "bProcessing": true,
+                "bServerSide": true,
+                "sAjaxSource": "ds",
 	            //"sDom": "rtS",
 	            //"sScrollY": "360px",
 	            //"bDeferRender": true,
 	            
-				"aaData": orders,
+				"aaData": [],
 				"aoColumns": [
 					{ "sTitle": "Code", "mDataProp": function(data, type, val) {
-	                        return data.code.value;
+	                        return data.code();
 	                	}
 	                },
 					{ "sTitle": "Status", "mDataProp": function(data, type, val) {
-	                		return data.status.value;
+	                		return data.status();
 	                	}
 	                },
 					{ "sTitle": "Customer", "mDataProp": function(data, type, val) {
-	                		return data.customer.value.code.value;
+	                		return data.customer().code();
 	                	}
 	                },
 					{ "sTitle": "Delivery Date", "mDataProp": function(data, type, val) {
-	                		return data.deliveryDate.value;
+	                		return data.deliveryDate();
 	                	}
 	                }
-				]
+				],
+				"fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
+                	dtCallback = fnCallback;
+                    var options = {};
+                    _.each(aoData, function(opt) {
+                    	options[opt.name] = opt.value;
+                    });
+                    eventing.publish('getorders', options);
+				}
 			} );	
 	        
 	        // hide the "show entries" goo

@@ -58,10 +58,15 @@ function(logger, eventing, OrderBuilder) {
 	    //--------------------------------------
 	    //  MODEL HANDLERS
 	    //--------------------------------------
-        self.onGetOrders = function() {
-	    	logger.info("Getting Orders");
+        self.onGetOrders = function(options) {
+        	options = options || {
+            	iDisplayStart: 0,
+                iDisplayLength: 10,
+                sEcho: ""
+			};
+	    	logger.info("Getting " + options.iDisplayLength + " Orders starting from " + options.iDisplayStart);
         	
-	        self.socket.emit('getorders');
+	        self.socket.emit('getorders', options);
         };
         
 	    //--------------------------------------
@@ -72,9 +77,10 @@ function(logger, eventing, OrderBuilder) {
             logger.info(orders);
             
             // hydrate the model
-            var o = OrderBuilder.build(orders);
+            var o = OrderBuilder.build(orders.aaData);
+            orders.aaData = o;
         
-        	eventing.publish("setorders", o);
+        	eventing.publish("setorders", orders);
 		};
                     
 	    //--------------------------------------

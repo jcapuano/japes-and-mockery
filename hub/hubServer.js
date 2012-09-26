@@ -21,9 +21,9 @@ function HubServer(config) {
 		self.io.sockets.on('connection', function (socket) {
         	console.log("Client connected");
         	//socket.broadcast.emit('user connected');
-            socket.on('getorders', function() {
+            socket.on('getorders', function(options) {
 		    	try {
-		        	self.os.getOrders(function(orders) {
+		        	self.os.getOrders(options, function(orders) {
                     	socket.emit('setorders', orders);
                     });
 			    } catch (ex) {
