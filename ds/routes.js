@@ -29,14 +29,15 @@ var routes = [
         handler: function(req, res, next) {
 	    	try {
 	        	console.log("Get to Order Service");
-                console.log(req.body);
-                //var start = parseInt(req.params.start) || 0;
-                //var length = parseInt(req.params.length) || 10;
-                //var echo = req.params.echo || "";
-                var start = 0;
-                var length = 10;
-                var echo = "";
-                
+                console.dir(req.params);
+                /*
+                var start = parseInt(req.params.start) || 0;
+                var length = parseInt(req.params.length) || 10;
+                var echo = req.params.echo || "";
+                */
+                var start = parseInt(req.params.iDisplayStart) || 0;
+                var length = parseInt(req.params.iDisplayLength) || 10;
+                var echo = req.params.sEcho || "";
                 
                 console.log("Get orders");
 		    	console.log("Getting " + length + " Orders starting from " + start);

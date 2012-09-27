@@ -10,17 +10,28 @@ function DataServiceOrders(config) {
     self.getOrders = function(options, callback) {
     	try {
         	console.log("Get Orders");
+            console.dir(options);
+            
         	//var url = self.URL + 'orders/start/' + options.iDisplayStart + '/length/' + options.iDisplayLength + '/echo/' + options.sEcho;
         	var url = self.URL + 'orders';
-            self.get(url, options, callback);
+            if (options) {
+            	url += "?";
+	            for (var opt in options) {
+                	if (url[url.length-1] != '?') {
+                    	url += "&";
+                    }
+	            	url += opt + "=" + options[opt];
+	            }
+            }
+            self.get(url, callback);
 	    } catch (ex) {
 	    	console.log('Error in retrieving orders: ' + ex);
 	    }
 	}
     
-    self.get = function(url, data, callback) {
+    self.get = function(url, callback) {
     	console.log("Calling REST URL: " + url);
-        self.rest.get(url, {data: data}).on('complete', function(result) {
+        self.rest.get(url).on('complete', function(result) {
         	if (result instanceof Error) {
             	callback({error: result.message});
 			} else {

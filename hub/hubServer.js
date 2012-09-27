@@ -24,6 +24,7 @@ function HubServer(config) {
             socket.on('getorders', function(options) {
 		    	try {
 		        	self.os.getOrders(options, function(orders) {
+                    	console.log("Orders received");
                     	socket.emit('setorders', orders);
                     });
 			    } catch (ex) {
