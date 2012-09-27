@@ -13,13 +13,13 @@ a {
 #content {
   background: none repeat scroll 0 0 #f1f1f1;
     Margin: 0 auto;
-    border-radius: 6px 6px 6px 6px;
+    
     box-shadow: 0 11px 8px -3px #555555;
     height: 546px;
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 10px;
-    width: 845px;
+    width: 851px;
     
 }
 
@@ -42,7 +42,7 @@ height: 83%;
 
 #wrapper {
 
-width: 100%;
+width: 948px;
 margin: 0 auto;
 }
 
