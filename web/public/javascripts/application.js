@@ -31,12 +31,14 @@ function(config, logger, eventing, ViewPresenter, HubClient, NavViewManager, Ord
             OrdersViewManager();
             OrderViewManager();
             
+            /*
             ////////////////////////////////////////////////////
             // testing 1,2,3
             setTimeout(function(){
             	eventing.publish('showorders');
             },3000);
             ////////////////////////////////////////////////////
+            */
         };
     };
 });
