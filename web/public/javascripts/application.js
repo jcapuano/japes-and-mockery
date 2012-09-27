@@ -1,41 +1,44 @@
-define(["utils/logger",
+define(["config", 
+		"utils/logger",
+		"utils/eventing",
+		"utils/viewPresenter",
 		//"hub/hubClient",
         "mocks/mockHubClient",
-		"controllers/ordersController"], 
-function(logger, HubClient, OrdersController) {
+		"viewmanagers/navigationViewManager", 
+		"viewmanagers/ordersViewManager", 
+		"viewmanagers/orderViewManager"], 
+function(config, logger, eventing, ViewPresenter, HubClient, NavViewManager, OrdersViewManager, OrderViewManager) {
 
-	return $.sammy(function() {
-		
+	return function AppViewManager() {
+    	var self = this;
+        
         logger.info("Creating Application");
+    
+    	self.hubclient = null;
         
-	    this.VIEW_PATH = '/views/';
-	    
-	    // set the selector of the "bound" element
-	    this.element_selector = '#content';
-	    
-		// Configure Sammy JS plugins
-		this.use(Sammy.Handlebars, 'html');
-		
-		// Configure helpers here
-		//this.helpers(ApplicationHelper);
+        self.run = function() {
+        	logger.info("Running Application");
         
-		var partials = {
-	    	orderList: this.VIEW_PATH + 'orderList.html',
-	        orderAdd: this.VIEW_PATH + 'orderAdd.html',
-	        orderEdit: this.VIEW_PATH + 'orderEdit.html'
-	    };
-		
-        this.get("#/", function(context) {
-        	var rc = context.load($("#content"));
-            rc.loadPartials(partials);
-        });
-        
-        this.hubclient = new HubClient();
-        this.hubclient.start("http://localhost:4242");
-        
-		// Configure controllers here
-		OrdersController(this);
-		
-        $( "#accordion" ).accordion({autoHeight: false, collapsible: true});
-	});
+        	logger.info("Pre-loading Partial Views");
+            ViewPresenter.viewselector = '#content';
+            
+        	ViewPresenter.load(config.views);
+            
+            self.hubclient = new HubClient();
+            self.hubclient.start(config.hubURL);
+            
+	        NavViewManager();
+            OrdersViewManager();
+            OrderViewManager();
+            
+            /*
+            ////////////////////////////////////////////////////
+            // testing 1,2,3
+            setTimeout(function(){
+            	eventing.publish('showorders');
+            },3000);
+            ////////////////////////////////////////////////////
+            */
+        };
+    };
 });

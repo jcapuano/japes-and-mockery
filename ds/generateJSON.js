@@ -309,7 +309,7 @@ function randomInt(low, high) {
 function randomDecimal(low, high, precision) {
 	low = low || 0;
     high = high | 1000;
-    precsion = precision || 2;
+    precision = precision || 2;
 	var p = Math.pow(10, precision);
     var d = (Math.random()*(high-low+1)) + low;
 	return Math.ceil(d * p) / p

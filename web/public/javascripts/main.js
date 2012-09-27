@@ -1,8 +1,9 @@
 require(["application", "utils/logger"], 
-function(app, logger) {
+function(Application, logger) {
     $(function() {
     	// required modules loaded
         logger.info("Running application");
-        app.run('#/');
+        var app = new Application();
+        app.run();
     });
 });
