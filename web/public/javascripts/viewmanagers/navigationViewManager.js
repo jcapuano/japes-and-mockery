@@ -34,7 +34,6 @@ function(logger, eventing) {
 	    //--------------------------------------
 		this.getOrders = function()
 		{
-			alert("clicked");
 			logger.info("Navigation: get order list");
 			eventing.publish("showorders");
 		}
