@@ -1,61 +1,27 @@
-define(["utils/logger", "utils/eventing", "models/validation"],
-function(logger, eventing, validation) {
+define(["utils/logger", 
+		"utils/eventing", 
+		"utils/viewPresenter"],
+function(logger, eventing, ViewPresenter) {
 
-	return function(app) { 
+	return function OrdersViewManager() { 
 		
+        var dtCallback = null;
+        
 	    //--------------------------------------
 	    //  EVENTS
 	    //--------------------------------------
-	    // pub: setorders
+	    // pub: getorders
 	    
-	    // sub: getorders
-        var dtCallback = null;
+	    // sub: setorders
 	    
 	    //--------------------------------------
 	    //  SUBSCRIPTIONS
 	    //--------------------------------------
         eventing.subscribeall([
-        	{topic: "setorders", handler: function(orders) {
-            	this.onSetOrders(orders);
-			}}
+        	{topic: "showorders", handler: function() { this.onShowOrders(); }},
+        	{topic: "setorders", handler: function(orders) { this.onSetOrders(orders); }}
 		]);
         
-	    //--------------------------------------
-	    //  ROUTES
-	    //--------------------------------------
-		
-		// GET index
-		app.get('#/orders', function(context) {
-        	logger.info("Requesting orders");
-            context.partial(app.VIEW_PATH + 'orderList.html',{}, function() {
-            	this.LoadOrders();
-			});
-		});
-		
-		// GET new
-		app.get('#/orders/new', function(context) {
-		});
-		
-		// POST add
-		app.post('#/orders', function(context) {
-		});
-		
-		// GET edit
-		app.get('#/orders/edit/:id', function(context) {
-		});
-		
-		// PUT update
-		app.put('#/orders/update/:id', function(context) {
-		});
-		
-		// DELETE destroy
-		app.del('#/orders/:id', function(context) {
-		});
-		
-		// GET show
-		app.get('#/orders/:id', function(context) {
-		});
-	
 	    //--------------------------------------
 	    //  HUB HANDLERS
 	    //--------------------------------------
@@ -76,6 +42,22 @@ function(logger, eventing, validation) {
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
+        this.onShowOrders = function() {
+            logger.info("Loading orders view");
+            
+            ViewPresenter.show("orderList.html");
+            
+            /*
+        	$("#content").empty();
+            var partial = TemplateLoader.get();
+            var template = Handlebars.compile(partial);
+        	$("#content").html(template({}));
+            */
+            
+            logger.info("Requesting orders");
+	        this.LoadOrders();
+        };
+        
         this.LoadOrders = function() {
         
 	    	var grid = $('#ordersTable')
@@ -131,18 +113,6 @@ function(logger, eventing, validation) {
         
 	    //--------------------------------------
 	    //  VIEW VALIDATIONS
-	    //--------------------------------------
-        this.setValidations = function(order) {
-        	// attach the validations to the view fields
-        	validation.SetViewValidations("#formOrderEdit", [
-            		new validation.ViewValidation("#inputOrderCode", order.code.validations),
-            		new validation.ViewValidation("#inputPONumber",order.poNumber.validations),
-            		new validation.ViewValidation("#selectStatus", order.status.validations)
-                    ]);
-        };
-        
-	    //--------------------------------------
-	    //  VALIDATIONS
 	    //--------------------------------------
 	};
 });    
