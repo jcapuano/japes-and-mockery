@@ -3,7 +3,7 @@ function(Property, validations) {
 	return function Project(id, code, description, status, customer, contacts, deliveryaddress, 
     						product, quantity, estimatecost, estimatedate) {
 	    this.id = Property(id);
-	    this.code = Property(name, [
+	    this.code = Property(code, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),

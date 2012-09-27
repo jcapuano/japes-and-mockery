@@ -49,7 +49,7 @@ function buildCustomer(c) {
 	var customer = new Customer();
     if (c) {
 	    customer.id = c.id;
-	    customer.name = c.name;
+	    customer.code = c.code;
 	    customer.description = c.description;
 	    customer.locations = buildAddresses(c.locations);
 	    customer.contacts = buildContacts(c.contacts);

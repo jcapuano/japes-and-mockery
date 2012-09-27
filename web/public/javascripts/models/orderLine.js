@@ -2,7 +2,7 @@ define(['models/property', 'models/validation'],
 function(Property, validation) {
 	return function OrderLine(id, code, description, quantity, unitPrice, tax, total, specialInstructions) {
 	    this.id = Property(id);
-	    this.code = Property(name, [
+	    this.code = Property(code, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),

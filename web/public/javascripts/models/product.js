@@ -2,7 +2,7 @@ define(['models/property', 'models/validation'],
 function(Property, validations) {
 	return function Product(id, code, description) {
 	    this.id = Property(id);
-	    this.code = Property(name, [
+	    this.code = Property(code, [
         	new validation.Validation('required'),
         	new validation.Validation('alphanum'),
         	new validation.Validation('min', 1),

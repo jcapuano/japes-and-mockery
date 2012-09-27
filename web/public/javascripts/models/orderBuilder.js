@@ -27,7 +27,7 @@ function(Order, OrderLine, Customer, Account, Address, Contact, Communication) {
 
     function buildCustomer(c) {
     	if (c) {
-        	return new Customer(c.id, c.name, c.description, buildAddresses(c.locations), 
+        	return new Customer(c.id, c.code, c.description, buildAddresses(c.locations), 
             					buildContacts(c.contacts), buildAccount(c.account), c.status);
 		}
 		return null;
