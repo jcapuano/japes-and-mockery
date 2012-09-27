@@ -3,6 +3,9 @@ function(logger, eventing) {
 
 	return function NavigationViewManager() { 
 		
+		logger.info("Initialize NavigationViewManager")
+		$("#orderList").bind("click", function() {getOrders();});
+		//$("#orderList").bind("click", function() {alert("clicked");});
 	    //--------------------------------------
 	    //  EVENTS
 	    //--------------------------------------
@@ -29,5 +32,13 @@ function(logger, eventing) {
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
+		this.getOrders = function()
+		{
+			alert("clicked");
+			logger.info("Navigation: get order list");
+			eventing.publish("showorders");
+		}
+		
+		//$("#orderList").bind("click", this.getOrders());
 	};
 });    
