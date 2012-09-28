@@ -39,6 +39,12 @@ function(logger, eventing, ViewPresenter, validation) {
 	    //  VIEW HANDLERS
 	    //--------------------------------------
         this.onEditOrder = function(id) {
+			logger.info("Showing order: " + id);
+			
+			//calls hub for data?  or already has a dataset
+			//publish event for hub
+			//onSetOrder show the page
+			ViewPresenter.show("orderEdit.html");
         
         };
         

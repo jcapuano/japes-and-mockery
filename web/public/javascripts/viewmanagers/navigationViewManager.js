@@ -5,6 +5,8 @@ function(logger, eventing) {
 		
 		logger.info("Initialize NavigationViewManager")
 		$("#orderList").bind("click", function() {getOrders();});
+		$("#orderEdit").bind("click", function() {getOrder();});
+		$("#orderNew").bind("click", function() {newOrder();});
 		//$("#orderList").bind("click", function() {alert("clicked");});
 	    //--------------------------------------
 	    //  EVENTS
@@ -36,6 +38,18 @@ function(logger, eventing) {
 		{
 			logger.info("Navigation: get order list");
 			eventing.publish("showorders");
+		}
+		
+		this.getOrder = function()
+		{
+			logger.info("Navigation: get order");
+			eventing.publish("editorder", 7);
+		}
+		
+		this.newOrder = function()
+		{
+			logger.info("Navigation: new order");
+			eventing.publish("neworder");
 		}
 		
 		//$("#orderList").bind("click", this.getOrders());
