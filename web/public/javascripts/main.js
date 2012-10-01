@@ -16,7 +16,7 @@ require.config({
             attach: 'History'
         },
     	'amplify': { attach: 'amplify' },
-    	'handlebars-1.0.0.beta.6': { 	
+    	'handlebars-1.0.rc.1': { 	
         	deps: ['jquery'],
         	attach: 'Handlebars'
 		},
@@ -30,7 +30,7 @@ require(["lib/underscore",
 		//"jquery-ui.min", "jquery.dataTables.min", 
         "lib/jquery.validate.min", "lib/additional-methods.min", 
         "lib/jquery.json-2.3.min", "lib/jquery.history", 
-		"lib/amplify", "lib/handlebars-1.0.0.beta.6", "lib/socket.io.min",
+		"lib/amplify", "lib/handlebars-1.0.rc.1", "lib/socket.io.min",
         "application", "utils/logger"], 
 function(_, /*jqui, jqdt, */jqv, jqva, jqjson, jqhist, amp, hb, sio, Application, logger) {
     $(function() {
