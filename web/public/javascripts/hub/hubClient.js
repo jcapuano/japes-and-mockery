@@ -61,8 +61,7 @@ function(logger, eventing, OrderBuilder) {
         self.onGetOrders = function(options) {
         	options = options || {
             	iDisplayStart: 0,
-                iDisplayLength: 10,
-                sEcho: ""
+                iDisplayLength: 10
 			};
 	    	logger.info("Getting " + options.iDisplayLength + " Orders starting from " + options.iDisplayStart);
         	

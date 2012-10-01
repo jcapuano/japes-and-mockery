@@ -5,7 +5,8 @@ define(function() {
         views: [
 	    	'orderList.html',
     	    'orderAdd.html',
-	        'orderEdit.html'
+	        'orderEdit.html',
+            'address.html'
         ]
 	};
 	return config;

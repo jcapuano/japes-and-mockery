@@ -37,7 +37,6 @@ var routes = [
                 */
                 var start = parseInt(req.params.iDisplayStart) || 0;
                 var length = parseInt(req.params.iDisplayLength) || 10;
-                var echo = req.params.sEcho || "";
                 
                 console.log("Get orders");
 		    	console.log("Getting " + length + " Orders starting from " + start);
@@ -62,8 +61,6 @@ var routes = [
             	var result = {
 	            	iTotalRecords: mockorders.length,
 	                iTotalDisplayRecords: mockorders.length,
-	                sEcho: echo,
-	                sColumns: "",
 	                aaData: orders
 	            };
                 

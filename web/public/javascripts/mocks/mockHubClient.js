@@ -71,8 +71,6 @@ function(logger, eventing, OrderBuilder, mockOrders) {
             eventing.publish('setorders', {
             	iTotalRecords: orders.length,
                 iTotalDisplayRecords: orders.length,
-                sEcho: options.sEcho,
-                sColumns: "",
                 aaData: o
             });
         };

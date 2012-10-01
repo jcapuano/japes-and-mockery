@@ -6,8 +6,9 @@
 var express = require('express')
   , routes = require('./routes')
   , i18n = require('i18n')
-  , http = require('http');
- // ,fs = require('fs')
+  , http = require('http')
+  //, path = require('path');
+  , fs = require('fs');
  // , hbs = require('hbs');
 
 var app = express();
@@ -16,8 +17,8 @@ var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 4141);
+  //app.set('views', [__dirname + '/views', __dirname + '/public/views']);
   app.set('views', __dirname + '/views');
-  //app.set('view engine', 'jade');
   app.set('view engine', 'html');
   app.engine('html', require('ejs').renderFile);  
   //app.engine('html', require('hbs').__express);
@@ -40,6 +41,20 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+
+app.get('*.html', function(req, res) {
+    //res.render(req.url);
+    
+	var filename = req.url;	
+	fs.exists(filename, function(exists) {
+		console.log("exists: " + exists);
+    	if (!exists) {			
+			filename = filename.substring(filename.lastIndexOf('/') + 1,  filename.length) || filename;
+        	//filename = path.basename(req.url);
+        }		
+		res.render(filename);
+    });    
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
