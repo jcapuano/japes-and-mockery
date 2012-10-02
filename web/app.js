@@ -7,8 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , i18n = require('i18n')
   , http = require('http')
-  //, path = require('path');
-  , fs = require('fs');
+  , path = require('path');
+  //, fs = require('fs');
  // , hbs = require('hbs');
 
 var app = express();
@@ -46,7 +46,7 @@ app.get('*.html', function(req, res) {
     //res.render(req.url);
     
 	var filename = req.url;	
-	fs.exists(filename, function(exists) {
+	path.exists(filename, function(exists) {
 		console.log("exists: " + exists);
     	if (!exists) {			
 			filename = filename.substring(filename.lastIndexOf('/') + 1,  filename.length) || filename;

@@ -6,44 +6,44 @@
 	<div class="col-left">
 	<label>
 <div style="float: left; margin-right: 20px;">
-	<span>Company</span><input id="company" type="text" name="name" style="width:200px;"/>
+	<span><%= __('Company') %></span><input id="company" type="text" name="name" style="width:200px;"/>
 </label>
 </div>
 <div style="width: 250px; float: right;">
 <label>
-<span>Phone #</span><input id="phone" type="text" name="phone" style="width:200px;"/>
+<span><%= __('Phone') %></span><input id="phone" type="text" name="phone" style="width:200px;" value="{{ phone }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Address</span><input id="address1" type="text" name="subject" />
+<span><%= __('Adress') %></span><input id="address1" type="text" name="subject" value="{{ address1 }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Address 2</span><input id="address2" type="text" name="subject" />
+<span><%= __('Address2') %></span><input id="address2" type="text" name="subject" value="{{ address2 }}" />
 </label>
 </div>
 </div>
 
 <div style="float: left;">
 <label>
-<span>Address 3</span><input id="address3" type="text" name="subject" />
+<span><%= __('Address3') %></span><input id="address3" type="text" name="subject" value="{{ addy3 }}" />
 </label>
 </div>
 <div style="float: right; width: 280px;">
 <label>
-<span>State/Province/Region</span><input id="state" type="text" name="phone" style="width:200px;"/>
+<span><%= __('StateProvinceRegion') %></span><input id="state" type="text" name="phone" style="width:200px;" value="{{ state }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Postal / Zip Code</span><input id="postal" type="text" name="subject" style="width:200px;"  />
+<span><%= __('Zip') %></span><input id="postal" type="text" name="subject" style="width:200px;" value="{{ zip }}" />
 </label>
 </div>
 <div style="float: right; width: 280px;">
 <label>
-<span>Country</span><input id="country" type="text" name="phone" style="width:200px;"/>
+<span><%= __('Country') %></span><input id="country" type="text" name="phone" style="width:200px;" value="{{ country }}" />
 </label>
 </div>
 

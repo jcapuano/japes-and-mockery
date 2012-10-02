@@ -44,7 +44,18 @@ function(logger, eventing, ViewPresenter, validation) {
 			//calls hub for data?  or already has a dataset
 			//publish event for hub
 			//onSetOrder show the page
-			ViewPresenter.show("orderEdit.html");
+			
+			var address = {address1: "addy1",
+				      address2: "addy2",
+				      city: "big city",
+				      state: "cool state",
+				      zip: "43065",
+					  phone: "1-800.big.butt",
+					  country: "Big Country"};
+					  
+					  
+			//ViewPresenter.show("orderEdit.html", order);
+			ViewPresenter.show("address.html", address);
         
         };
         
