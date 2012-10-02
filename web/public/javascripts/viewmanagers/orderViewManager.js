@@ -30,6 +30,9 @@ function(logger, eventing, ViewPresenter, validation) {
         	try {
 	        	logger.info("Received order");
 	            logger.info(order);
+				
+				ViewPresenter.show("orderEdit.html", order);
+				
 			}
             catch (e) {
             	logger.error(e);
@@ -40,23 +43,30 @@ function(logger, eventing, ViewPresenter, validation) {
 	    //  VIEW HANDLERS
 	    //--------------------------------------
         this.onEditOrder = function(id) {
-			logger.info("Showing order: " + id);
+			logger.info("getting order: " + id);
 			
 			//calls hub for data?  or already has a dataset
 			//publish event for hub
 			//onSetOrder show the page
 			
-			var address = {address1: "addy1",
-				      address2: "addy2",
-				      city: "big city",
-				      state: "cool state",
-				      zip: "43065",
-					  phone: "1-800.big.butt",
-					  country: "Big Country"};
+			//var order = {PONumber: "PONumber",
+			//			deliveryAddress: {
+			//			value:{
+			 //   line1: "111 My House",
+			//    line2: "",
+			//    line3: "",
+			//    city: "Big City",
+			//    state: "State 72",
+			//    country: "Planet Mars",
+			//    postalcode: "111111"}
+	        //}
+			//};
+		
+			eventing.publish('getorder', 0);
 					  
 					  
-			ViewPresenter.show("orderEdit.html", address);
-			//ViewPresenter.show("address.html", address);
+			
+			//ViewPresenter.show("address.html", order);
         
         };
         

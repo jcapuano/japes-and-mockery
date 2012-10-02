@@ -1,9 +1,4 @@
-<!--
-<div>
-Order Edit
-{{> address }}
-</div>
--->
+
 
 <div id="order-wrap">
 	<div class="contain" style="width: 875px; height: 200px; background: #999; margin: 0 auto;">
@@ -29,7 +24,7 @@ Order Edit
 	
 	<div id="items-partial" style="width:875px; height:200px; background:#dedede; margin: 0 auto; margin-top:10px;"></div> <!--insert items partial-->
 	
-	<div id="delivery-partial" style="width:875px; height:200px; background:#dcdcdc; margin: 0 auto; margin-top:10px;"> {{> deliveryContact }} </div> <!--insert delivery contact partial-->
+	<div id="delivery-partial" style="width:875px; height:200px; background:#dcdcdc; margin: 0 auto; margin-top:10px;"> {{include "address" addr=deliveryAddress.value }} </div> <!--insert delivery contact partial-->
 
 	<div id="notes" style="width:500px; height:160px; margin-top:24px; padding-left: 12px;">
 		<div>
