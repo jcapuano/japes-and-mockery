@@ -13,6 +13,7 @@ define(function() {
 	        }
 	    }
         
+		property.value = v;
         property.validations = validations || [];	// collection of validation
         property.validate = function() {
         	return _.all(this.validations, function(validation) {

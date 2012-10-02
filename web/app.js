@@ -47,7 +47,6 @@ app.get('*.html', function(req, res) {
     
 	var filename = req.url;	
 	path.exists(filename, function(exists) {
-		console.log("exists: " + exists);
     	if (!exists) {			
 			filename = filename.substring(filename.lastIndexOf('/') + 1,  filename.length) || filename;
         	//filename = path.basename(req.url);
