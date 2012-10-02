@@ -31,7 +31,8 @@ function(logger, eventing, OrderBuilder, mockOrders) {
 	    //--------------------------------------
 	    this.subscribe = function() {
 	    	var subs = [
-	        	{topic: "getorders", handler: this.onGetOrders}
+	        	{topic: "getorders", handler: this.onGetOrders},
+	        	{topic: "getorder", handler: this.onGetOrder}
 	        ];
 	        
 	    	eventing.subscribeall(subs);
@@ -73,6 +74,17 @@ function(logger, eventing, OrderBuilder, mockOrders) {
                 iTotalDisplayRecords: orders.length,
                 aaData: o
             });
+        };
+        
+        this.onGetOrder = function(id) {
+        	
+	    	logger.info("Getting Order for " + id);
+            
+            var order = _.find(orders, function(order) {
+            	return order.id() == id;
+            });
+            
+            eventing.publish('setorder', order);
         };
     };
 });

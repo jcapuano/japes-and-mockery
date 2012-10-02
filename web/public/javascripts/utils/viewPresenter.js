@@ -1,12 +1,32 @@
 // View Presentation
 define(function() {
+	Handlebars.registerHelper('include', function(template, options){
+	  // Find the partial in question.
+	  var partial = Handlebars.partials[template];
+      var fn = handlebars_template(partial, template);
+	   
+	  // Build the new context; if we don't include `this` we get functionality
+	  // similar to {% include ... with ... only %} in Django.
+	  //var context = _.extend({}, this, options.hash);
+	  var context = _.extend({}, options.hash);
+	   
+       var html = fn(context);
+	  // Render, marked as safe so it isn't escaped.
+	  return new Handlebars.SafeString(html);
+	});
+
 	var handlebars_cache = {};
     
-	function handlebars(view, data, partials, name) {
+	function handlebars_template(view, name) {
     	var fn = handlebars_cache[name];
         if (!fn) {
 			fn = handlebars_cache[name] = Handlebars.compile(view);
 		}
+        return fn;
+    };
+    
+	function handlebars(view, data, partials, name) {
+    	var fn = handlebars_template(view, name);
         
         data     = $.extend({}, data);
         partials = $.extend({}, data.partials, partials);
@@ -38,11 +58,15 @@ define(function() {
             self = this;
 
             $.each(views, function(index, view) {
-            	deferreds.push($.get(self.viewpath + view, function(data) {
-                	var name = view.replace(/\.[^/.]+$/, "");
-                    Handlebars.registerPartial(name, data);
-                	self.views[name] = data;
-				}));
+            	deferreds.push($.ajax({
+                	url: self.viewpath + view,
+                    dataType: 'html',
+                    success: function(data) {
+                		var name = view.replace(/\.[^/.]+$/, "");
+	                    Handlebars.registerPartial(name, data);
+    	            	self.views[name] = data;
+					}
+                }));
 			});
             
             $.when.apply(null, deferreds).done(callback);

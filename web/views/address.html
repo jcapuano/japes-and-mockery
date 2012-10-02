@@ -1,6 +1,6 @@
 
 
-
+{{#with addr}}
 <div id="address">
 	<h1>Delivery Information:</h1>
 	<div class="col-left">
@@ -11,41 +11,42 @@
 </div>
 <div style="width: 250px; float: right;">
 <label>
-<span>Phone #</span><input id="phone" type="text" name="phone" style="width:200px;"/>
+<span>Phone #</span><input id="phone" type="text" name="phone" style="width:200px;" value="{{ phone }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Address</span><input id="address1" type="text" name="subject" />
+<span>Address</span><input id="address1" type="text" name="subject" value="{{ line1 }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Address 2</span><input id="address2" type="text" name="subject" />
+<span>Address 2</span><input id="address2" type="text" name="subject" value="{{ line2 }}" />
 </label>
 </div>
 </div>
 
 <div style="float: left;">
 <label>
-<span>Address 3</span><input id="address3" type="text" name="subject" />
+<span>Address 3</span><input id="address3" type="text" name="subject" value="{{ line3 }}" />
 </label>
 </div>
 <div style="float: right; width: 280px;">
 <label>
-<span>State/Province/Region</span><input id="state" type="text" name="phone" style="width:200px;"/>
+<span>State/Province/Region</span><input id="state" type="text" name="phone" style="width:200px;" value="{{ state }}" />
 </label>
 </div>
 <div style="float: left;">
 <label>
-<span>Postal / Zip Code</span><input id="postal" type="text" name="subject" style="width:200px;"  />
+<span>Postal / Zip Code</span><input id="postal" type="text" name="subject" style="width:200px;" value="{{ postalCode }}" />
 </label>
 </div>
 <div style="float: right; width: 280px;">
 <label>
-<span>Country</span><input id="country" type="text" name="phone" style="width:200px;"/>
+<span>Country</span><input id="country" type="text" name="phone" style="width:200px;" value="{{ country }}" />
 </label>
 </div>
 
 
 </div>
+{{/with}}
