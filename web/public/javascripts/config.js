@@ -6,7 +6,8 @@ define(function() {
 	    	'orderList.html',
     	    'orderAdd.html',
 	        'orderEdit.html',
-            'address.html'
+            'address.html',
+			'deliveryContact.html'
         ]
 	};
 	return config;

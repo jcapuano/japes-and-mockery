@@ -19,7 +19,8 @@ function(logger, eventing, ViewPresenter, validation) {
 	    //--------------------------------------
         eventing.subscribeall([
         	{topic: "editorder", handler: function(id) { this.onEditOrder(id); }},
-        	{topic: "setorder", handler: function(order) { this.onSetOrder(order); }}
+        	{topic: "setorder", handler: function(order) { this.onSetOrder(order); }},
+			{topic: "neworder", handler: function() {this.onNewOrder(); }}
 		]);
         
 	    //--------------------------------------
@@ -54,11 +55,16 @@ function(logger, eventing, ViewPresenter, validation) {
 					  country: "Big Country"};
 					  
 					  
-			//ViewPresenter.show("orderEdit.html", order);
-			ViewPresenter.show("address.html", address);
+			ViewPresenter.show("orderEdit.html", address);
+			//ViewPresenter.show("address.html", address);
         
         };
         
+		this.onNewOrder = function(){
+			logger.info("New Order");
+			
+			ViewPresenter.show("newOrder.html");
+		};
         
 	    //--------------------------------------
 	    //  VIEW VALIDATIONS
