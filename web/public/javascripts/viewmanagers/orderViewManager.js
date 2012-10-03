@@ -62,7 +62,7 @@ function(logger, eventing, ViewPresenter, validation) {
 	        //}
 			//};
 		
-			eventing.publish('getorder', 0);
+			eventing.publish('getorder', id);
 					  
 					  
 			

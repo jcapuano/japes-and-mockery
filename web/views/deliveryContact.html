@@ -2,22 +2,22 @@
 
 <div id="delivery-contact>
 <div style="float: left; margin-right: 20px;">
-	<span>Delivery Contact</span><input id="company" type="text" name="name" style="width:200px;"/>
+	<span>Delivery Contact</span><input id="company" type="text" name="name" style="width:200px;" value=""/>
 </label>
 </div>
 
 <div>
 <!---insert delivery address partial--->
-	{{> address }}
+	{{include "address" addr=deliveryAddress.value }}
 </div>
 
 <div id="wrap" style="width: 633px;">
 	<div style="margin-right: 20px; float:left;">
-	<span>Requested Date</span><input id="request date" type="text" name="name" style="width:200px;"/>
+	<span>Requested Date</span><input id="request date" type="text" name="name" style="width:200px;" value=" {{ requestedDate }}" />
 </label>
 </div>
 <div style="margin-right: 20px; float:right;">
-	<span>Delivery Date</span><input id="delivery date" type="text" name="name" style="width:200px;"/>
+	<span>Delivery Date</span><input id="delivery date" type="text" name="name" style="width:200px;" value="{{ deliveryDate }}"/>
 </label>
 </div>
 </div>

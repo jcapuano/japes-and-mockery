@@ -43,7 +43,7 @@ function(logger, eventing) {
 		this.getOrder = function()
 		{
 			logger.info("Navigation: get order");
-			eventing.publish("editorder", 7);
+			eventing.publish("editorder", 0);
 		}
 		
 		this.newOrder = function()

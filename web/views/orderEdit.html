@@ -11,12 +11,12 @@
 </div>
 <div style="float: right;">
 <label>
-<span>Code</span><input id="code" type="text" name="code" style="width:200px;"/>
+<span>Code</span><input id="code" type="text" name="code" style="width:200px;" value="{{ code }}"/>
 </label>
 </div>
 <div style="float: right;">
 <label>
-<span>PO Number</span><input id="ponumber" type="text" name="ponumber" style="width:200px;"  />
+<span>PO Number</span><input id="ponumber" type="text" name="ponumber" style="width:200px;" value="{{ poNumber }}" />
 </label>
 	</div>
 </div>
@@ -24,7 +24,7 @@
 	
 	<div id="items-partial" style="width:875px; height:200px; background:#dedede; margin: 0 auto; margin-top:10px;"></div> <!--insert items partial-->
 	
-	<div id="delivery-partial" style="width:875px; height:200px; background:#dcdcdc; margin: 0 auto; margin-top:10px;"> {{include "address" addr=deliveryAddress.value }} </div> <!--insert delivery contact partial-->
+	<div id="delivery-partial" style="width:875px; height:200px; background:#dcdcdc; margin: 0 auto; margin-top:10px;"> {{>deliveryContact}} </div> <!--insert delivery contact partial-->
 
 	<div id="notes" style="width:500px; height:160px; margin-top:24px; padding-left: 12px;">
 		<div>
@@ -36,4 +36,5 @@
 	
 	</div>
 </div>
+
 
