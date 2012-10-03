@@ -4,5 +4,13 @@
 	"Customers": "Customers",
 	"List": "List",
 	"New": "New",
-	"Edit": "Edit"
+	"Edit": "Edit",
+	"Company": "Company",
+	"Phone": "Phone",
+	"Adress": "Adress",
+	"Address2": "Address2",
+	"Address3": "Address3",
+	"StateProvinceRegion": "StateProvinceRegion",
+	"Zip": "Zip",
+	"Country": "Country"
 }
