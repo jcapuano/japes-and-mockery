@@ -107,7 +107,11 @@ function(logger, eventing, ViewPresenter) {
 				}
 			} );	
 			
-			//$('#ordersTable tbody tr').click(function() {var data = grid.fnGetData( this ); alert("clicked: " + data);  });
+			$('#ordersTable tbody tr').click(function(){
+				var data = grid.fnGetData( this ); 
+				//alert("clicked: " + data.id());  
+				eventing.publish('editorder', data.id());
+				});
 	        
 	        // hide the "show entries" goo
 	        $('#ordersTable_length').parent().css('display','none'); 
