@@ -6,25 +6,37 @@
   <meta name="description" content="Orders Sandbox">
   <meta name="author" content="SitePoint">
   <link rel="stylesheet" href="/stylesheets/style.css?v=1.0">
-  <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.23/themes/ui-lightness/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables.css">
+  
+  
   <link href="/menu_assets/styles.css" rel="stylesheet" type="text/css">
   <!--
   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables_themeroller.css">
   -->
   <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-</head>
+
+
+  </head>
 <body>  
+	<div id="container">
+	
+	<div id="bg-gray"></div>
+	
+	<div id="main-frame"></div>
+	<div id="top">
+		<div class="logo">Command Alkon</div>
+	</div>
 	<header>
 	<div id="headwrap">
 	<% include navigation.html %>
+	<div class="clearfix"></div>
 	</div>
 	</header>
-	<div id="container">
+	
 
 		<div id="wrapper">
    
@@ -36,7 +48,13 @@
 	</div>
 
 	<footer>
+	<div id="wrapper-footer">
+		<div id="banner-footer"></div>
+	</div>
+	
 	</footer>
+	
+	<div class="tooltip" style="position: absolute; top: -62px; left: 246px; display: none; ">Tooltips can be positioned anywhere relative to the trigger element.</div>
 
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 	<script>window.jQuery || document.write('<script src="/javascripts/lib/jquery-1.8.2.min.js"><\/script>')</script>

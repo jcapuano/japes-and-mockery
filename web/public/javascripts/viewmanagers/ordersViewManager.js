@@ -64,8 +64,8 @@ function(logger, eventing, ViewPresenter) {
 	          .dataTable( {
 	            "bJQueryUI": true,
 	            //"asStripeClasses": ['planningGridOdd', 'planningGridEven'],
-	            "bSort": false,
-	            "bFilter": false,
+	            "bSort": true,
+	            "bFilter": true,
 	            "bInfo": true,
 	            "bPaginate": true,
 	           	"iDisplayStart": 0,
