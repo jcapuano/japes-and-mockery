@@ -33,6 +33,12 @@ function(logger, eventing, ViewPresenter, validation) {
 				
 				ViewPresenter.show("orderEdit.html", order);
 				
+				$('#date').val(Globalize.format( order.requestedDate(), 'd'));
+				$('#requestdate').val(Globalize.format( order.requestedDate(), 'd' ));
+				$('#deliverydate').val(Globalize.format( order.deliveryDate(), 'd' ));
+				$('#postal').val(order.deliveryAddress().postalCode());
+				$('#deliveryContact').val(order.deliveryContact().name());
+				
 			}
             catch (e) {
             	logger.error(e);

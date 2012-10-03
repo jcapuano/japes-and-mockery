@@ -46,14 +46,14 @@ function(logger, eventing, ViewPresenter) {
             logger.info("Loading orders view");
             
             ViewPresenter.show("orderList.html");
-            
+			
             /*
         	$("#content").empty();
             var partial = TemplateLoader.get();
             var template = Handlebars.compile(partial);
         	$("#content").html(template({}));
             */
-            
+
             logger.info("Requesting orders");
 	        this.LoadOrders();
         };
@@ -73,6 +73,7 @@ function(logger, eventing, ViewPresenter) {
                 "bProcessing": true,
                 "bServerSide": true,
                 "sAjaxSource": "ds",
+				
 	            //"sDom": "rtS",
 	            //"sScrollY": "360px",
 	            //"bDeferRender": true,
@@ -105,6 +106,8 @@ function(logger, eventing, ViewPresenter) {
                     eventing.publish('getorders', options);
 				}
 			} );	
+			
+			//$('#ordersTable tbody tr').click(function() {var data = grid.fnGetData( this ); alert("clicked: " + data);  });
 	        
 	        // hide the "show entries" goo
 	        $('#ordersTable_length').parent().css('display','none'); 
