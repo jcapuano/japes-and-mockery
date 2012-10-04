@@ -18,7 +18,7 @@ function(logger, eventing, ViewPresenter, validation) {
 	    //  SUBSCRIPTIONS
 	    //--------------------------------------
         eventing.subscribeall([
-        	{topic: "editorder", handler: function(id) { this.onEditOrder(id); }},
+        	{topic: "editorder", handler: function(order) { this.onEditOrder(order); }},
         	{topic: "setorder", handler: function(order) { this.onSetOrder(order); }},
 			{topic: "neworder", handler: function() {this.onNewOrder(); }}
 		]);
@@ -48,8 +48,11 @@ function(logger, eventing, ViewPresenter, validation) {
 	    //--------------------------------------
 	    //  VIEW HANDLERS
 	    //--------------------------------------
-        this.onEditOrder = function(id) {
-			logger.info("getting order: " + id);
+        this.onEditOrder = function(order) {
+			logger.info("getting order: " + order.id());
+			
+			//the data comes from the list so use it....
+			this.onSetOrder(order);
 			
 			//calls hub for data?  or already has a dataset
 			//publish event for hub
@@ -68,7 +71,7 @@ function(logger, eventing, ViewPresenter, validation) {
 	        //}
 			//};
 		
-			eventing.publish('getorder', id);
+			//eventing.publish('getorder', id);
 					  
 					  
 			

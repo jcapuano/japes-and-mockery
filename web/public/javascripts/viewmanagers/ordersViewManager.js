@@ -109,8 +109,7 @@ function(logger, eventing, ViewPresenter) {
 			
 			$('#ordersTable tbody tr').click(function(){
 				var data = grid.fnGetData( this ); 
-				//alert("clicked: " + data.id());  
-				eventing.publish('editorder', data.id());
+				eventing.publish('editorder', data);
 				});
 	        
 	        // hide the "show entries" goo
