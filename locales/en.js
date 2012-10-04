@@ -12,5 +12,6 @@
 	"Address3": "Address3",
 	"StateProvinceRegion": "StateProvinceRegion",
 	"Zip": "Zip",
-	"Country": "Country"
+	"Country": "Country",
+	"Address": "Address"
 }
