@@ -31,6 +31,28 @@ function(logger, eventing, ViewPresenter, validation) {
 	        	logger.info("Received order");
 	            logger.info(order);
 				
+				//composite data
+				//var data={
+				
+				//	deliveryContact:{
+				//		value:{
+				//			requestedDate: "req date",
+				//			deliveryDate: "del date",
+				//			deliveryInstructions: "some instructions",
+				//			deliveryAddress: {
+				//				value:{
+				//					line1: "111 My House",
+				//					line2: "",
+				//					line3: "",
+				//					city: "Big City",
+				//					state: "State 72",
+				//					country: "Planet Mars",
+				//					postalCode: "111111"}
+				//			}
+				//		}
+				//	}						
+				//};
+				
 				ViewPresenter.show("orderEdit.html", order);
 				
 				$('#date').val(Globalize.format( order.requestedDate(), 'd'));

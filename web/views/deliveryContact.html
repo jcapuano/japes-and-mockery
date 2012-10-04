@@ -2,7 +2,7 @@
 
 <div id="delivery-contact>
 <div style="float: left; margin-right: 20px;">
-	<span>Delivery Contact</span><input id="deliveryContact" type="text" name="name" style="width:200px;" value=""/>
+	<span>Delivery Contact</span><input id="deliveryContact" type="text" name="name" style="width:200px;" value="{{ deliveryContact }}"/>
 </label>
 </div>
 
@@ -13,11 +13,11 @@
 
 <div id="wrap" style="width: 633px;">
 	<div style="margin-right: 20px; float:left;">
-	<span>Requested Date</span><input id="requestdate" type="text" name="name" style="width:200px;"/>
+	<span>Requested Date</span><input id="requestdate" type="text" name="name" style="width:200px;" value="{{ requestedDate }}" />
 </label>
 </div>
 <div style="margin-right: 20px; float:right;">
-	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px;"/>
+	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px;" value="{{ deliveryDate }}"/>
 </label>
 </div>
 </div>

@@ -7,7 +7,8 @@ define(function() {
     	    'orderAdd.html',
 	        'orderEdit.html',
             'address.html',
-			'deliveryContact.html'
+			'deliveryContact.html',
+			'newCustomer.html'
         ]
 	};
 	return config;
