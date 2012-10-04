@@ -1,12 +1,49 @@
 
 
+
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+#address-drop {
+background-color: rgba(0,0,0,0.40);
+width: 100%;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready (function () {
+	$('.icon').click (function () {
+		$('#notes').css('display', 'none');
+		$('#address-drop').slideDown();
+		
+		});
+		$('#close').click (function () {
+			
+			$('#address-drop').slideUp('slow');
+			$('#notes').css('display', 'block');
+			
+			});
+			
+			$('.lookup').click (function () {
+			 $('#customerlist').toggle(function() {
+            $('#customerlist').animate({right: '300px'}, 300);
+			});
+			});
+	});	
+
+</script>
+</head>
+<body>
+
 <div id="delivery-contact>
-<div style="float: left; margin-right: 20px;">
+<div id="c" style="margin-right: 20px; margin-bottom: 15px;">
 	<span>Delivery Contact</span><input id="deliveryContact" type="text" name="name" style="width:200px;" value="{{ deliveryContact.value.name }}"/>
 </label>
-</div>
 
-<div>
+</div>
+<img class="icon" style="position:absolute; margin-left: 205px; top: 533px; cursor: pointer;" src="../images/icon1.gif">
+<div id="address-drop" style="display: none;">
 <!---insert delivery address partial--->
 	{{include "address" addr=deliveryAddress.value }}
 </div>
@@ -17,17 +54,19 @@
 </label>
 </div>
 <div style="margin-right: 20px; float:right;">
-	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px;" value="{{ deliveryDate }}"/>
+	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px;" value="{{ deliveryDate }}" />
 </label>
 </div>
 </div>
-<div id="delivery-instructions">
+<div id="delivery-instructions" style="margin-top: 10px;">
 <div>
          <label>
-          <span></span><textarea rows="10" cols="30" style="width:400px; height:140px;" value="{{ deliveryInstructions }}"></textarea>
+          <span></span><textarea rows="10" cols="30" style="width:400px; height:140px; margin-top: 15px;" value="{{ deliveryInstructions }}"></textarea>
          </label>
 	</div>
 </div>
 
 </div>
+</body>
+</html>
 
