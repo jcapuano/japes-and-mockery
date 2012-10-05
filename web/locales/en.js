@@ -13,5 +13,6 @@
 	"Address3": "Address 3",
 	"StateProvinceRegion": "State/Province/Region",
 	"Zip": "Postal / Zip Code",
-	"Country": "Country"
+	"Country": "Country",
+	"Address": "Address"
 }

@@ -4,6 +4,7 @@ define(["utils/logger",
 		"models/validation"],
 function(logger, eventing, ViewPresenter, validation) {
 
+
 	return function OrderViewManager() { 
 		
 	    //--------------------------------------
@@ -55,11 +56,13 @@ function(logger, eventing, ViewPresenter, validation) {
 				
 				ViewPresenter.show("orderEdit.html", order);
 				
+				
 				$('#date').val(Globalize.format( order.requestedDate(), 'd'));
-				$('#requestdate').val(Globalize.format( order.requestedDate(), 'd' ));
-				$('#deliverydate').val(Globalize.format( order.deliveryDate(), 'd' ));
-				$('#postal').val(order.deliveryAddress().postalCode());
-				$('#deliveryContact').val(order.deliveryContact().name());
+				$('#requestdate').val(Globalize.format( order.requestedDate(), 'd' )).datepicker();
+				$('#deliverydate').val(Globalize.format( order.deliveryDate(), 'd' )).datepicker();
+				
+
+
 				
 			}
             catch (e) {
