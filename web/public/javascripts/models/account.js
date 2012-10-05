@@ -46,6 +46,6 @@ function(Property,validation) {
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthanequal', 0)
-		]);
+		], "c");
     }
 });
