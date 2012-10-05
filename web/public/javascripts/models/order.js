@@ -66,12 +66,12 @@ function(Property, validation) {
 	    this.requestedDate = Property(requestedDate, [
         	new validation.Validation('required'),
         	new validation.Validation('datetime')
-        ]);						
+        ], "d");						
         // Date
 	    this.deliveryDate = Property(deliveryDate, [
         	new validation.Validation('required'),
         	new validation.Validation('datetime')
-        ]);							
+        ], "d");							
         // collection of OrderLine
 	    this.items = Property(items, [
         	new validation.Validation('required'),
@@ -82,16 +82,16 @@ function(Property, validation) {
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthan', 0)
-		]);
+		], "c");
 	    this.tax = Property(tax, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthanequal', 0)
-		]);
+		], "c");
 	    this.grandTotal = Property(grandTotal, [
         	new validation.Validation('optional'),
         	new validation.Validation('numeric'),
         	new validation.Validation('greaterthan', 0)
-		]);
+		], "c");
     };
 });

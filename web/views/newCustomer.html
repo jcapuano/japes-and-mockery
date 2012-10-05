@@ -1,16 +1,7 @@
 <html>
 <head>
 <style>
-input    {
-width:500px;
-display:block;
-border: 1px solid #999;
-height: 25px;
--webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
--moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-float: right;
-}
+
 
 .lookup {
     background: none repeat scroll 0 0 red;
@@ -32,14 +23,14 @@ height: 25px;
 </head>
 <body>
 <div id="newcustomer">
-<div style="width: 300px;">
+<div style="width: 300px; padding-left: 60px; padding-top: 20px;">
 <label>
 <span>Customer</span><input id="newCustomer" type="text" name="Customer" style="width:227px;" value="{{ customer.value.code }}"/>
 </label>
 
 </div>
 
-<div class="lookup">+</div>
+<img class="Custosearch" style="position:absolute; margin-left: 296px; top: 134px; cursor: pointer;" src="../images/searchicon.png">
 </div>
 
 
