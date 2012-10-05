@@ -138,7 +138,7 @@ width:500px;
 display:block;
 border: 1px solid #999;
 height: 25px;
-
+font-family: 'Droid Sans',sans-serif;
 }
 
 .col-left {
@@ -164,6 +164,9 @@ margin: 0 auto;
 margin-top: 40px;
 font-family: 'Droid Sans', sans-serif;
 border: 1px solid #cdcdcd;
+
+
+
 }
 .customer-partial {
 width: 500px;

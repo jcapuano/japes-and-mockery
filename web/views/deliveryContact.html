@@ -38,11 +38,11 @@ $(document).ready (function () {
 
 <div id="delivery-contact>
 <div id="c" style="margin-right: 20px; margin-bottom: 15px;">
-	<span>Delivery Contact</span><input id="deliveryContact" type="text" name="name" style="width:200px;" value="{{ deliveryContact.value.name }}"/>
+	<span>Delivery Contact</span><input id="deliveryContact" type="text" name="name" style="width:200px; margin-top:5px;" value="{{ deliveryContact.value.name }}"/>
 </label>
 
 </div>
-<img class="icon" style="position:absolute; margin-left: 205px; top: 533px; cursor: pointer;" src="../images/icon1.gif">
+<img class="icon" style="position:absolute; margin-left: 205px; top: 536px; cursor: pointer;" src="../images/icon1.gif">
 <div id="address-drop" style="display: none;">
 <!---insert delivery address partial--->
 	{{include "address" addr=deliveryAddress.value }}
@@ -50,18 +50,18 @@ $(document).ready (function () {
 
 <div id="wrap" style="width: 633px;">
 	<div style="margin-right: 20px; float:left;">
-	<span>Requested Date</span><input id="requestdate" type="text" name="name" style="width:200px;" value="{{ requestedDate }}" />
+	<span>Requested Date</span><input id="requestdate" type="text" name="name" style="width:200px; margin-top:5px; " value="{{ requestedDate }}" />
 </label>
 </div>
 <div style="margin-right: 20px; float:right;">
-	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px;" value="{{ deliveryDate }}" />
+	<span>Delivery Date</span><input id="deliverydate" type="text" name="name" style="width:200px; margin-top:5px;" value="{{ deliveryDate }}" />
 </label>
 </div>
 </div>
 <div id="delivery-instructions" style="margin-top: 10px;">
 <div>
          <label>
-          <span></span><textarea rows="10" cols="30" style="width:400px; height:140px; margin-top: 15px;" value="{{ deliveryInstructions }}"></textarea>
+          <span></span><textarea rows="10" cols="30" style="width:400px; height:140px; margin-top: 15px;" value="{{ deliveryInstructions }}">Delivery Instructions</textarea>
          </label>
 	</div>
 </div>
